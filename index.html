@@ -441,6 +441,47 @@ h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
 .cta-card h2{color:#fff;font-size:24px}
 .cta-card p{font-size:14.5px;color:#fff;opacity:.72;margin-top:14px;line-height:1.65}
 .cta-card .btn-primary{margin-top:24px}
+/* ---------- Bloc coordonnées, intégré à l'accueil ----------
+   Volontairement plus discret que le reste : petits champs, libellés
+   en micro-capitales, aucun aplat. Il accompagne le CTA, il ne le
+   concurrence pas. */
+.id-card{margin-top:26px;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:20px}
+.id-intro{font-size:13.5px;line-height:1.6;color:var(--gris);max-width:32em;margin-bottom:18px}
+.id-intro b{color:var(--noir);font-weight:700}
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.id-field{margin-top:12px}
+.id-grid .id-field,.id-card .id-field:first-of-type{margin-top:0}
+.id-label{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--gris);margin-bottom:6px}
+.id-label .why{text-transform:none;letter-spacing:0;font-size:11px;font-weight:600;
+  color:var(--accent-text)}
+.id-card input,.id-card select{
+  width:100%;min-height:44px;padding:10px 13px;
+  font-family:inherit;font-size:15px;font-weight:600;color:var(--noir);
+  background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;
+  -webkit-appearance:none;appearance:none;transition:border-color .15s ease}
+.id-card input:focus,.id-card select:focus{outline:none;border-color:var(--violet)}
+.id-card input::placeholder{color:var(--placeholder);font-weight:400}
+.id-tel-row{display:grid;grid-template-columns:96px 1fr;gap:8px}
+.id-card select{font-size:14px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 17px) 19px,calc(100% - 12px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:30px}
+.id-note{font-size:11.5px;line-height:1.55;color:var(--gris);margin-top:10px;max-width:34em}
+
+/* Le "pourquoi" du numéro : c'est la contrepartie, elle doit se voir. */
+.id-gift{margin-top:18px;background:var(--soft-bg);border-radius:10px;padding:16px 18px}
+.id-gift .eyebrow{display:block;margin-bottom:9px}
+.id-gift p{font-size:14px;font-weight:600;line-height:1.55;color:var(--noir);max-width:32em}
+.id-gift ul{list-style:none;margin:11px 0 0;display:grid;gap:7px}
+.id-gift li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.5;color:var(--noir)}
+.id-gift li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent-text)}
+.id-gift .id-note{margin-top:12px;color:var(--gris)}
+.id-err{display:none;font-size:12px;font-weight:600;color:#D9455F;margin-top:14px}
+:root[data-theme="dark"] .id-err{color:#FF8095}
+.id-err.on{display:block}
+
 /* ---------- Bloc appel (masqué par défaut) ---------- */
 #call-block{display:none}
 
@@ -493,12 +534,8 @@ h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
 
     <div class="meta-row">
       <span class="chip"><span class="dot"></span>4 minutes</span>
-      <span class="chip"><span class="dot"></span>Aucune inscription</span>
+      <span class="chip"><span class="dot"></span>14 questions</span>
       <span class="chip"><span class="dot"></span>Résultat immédiat</span>
-    </div>
-
-    <div class="cta-zone">
-      <button class="btn btn-primary btn-hero btn-block" id="start-btn">Commencer le diagnostic</button>
     </div>
 
     <div class="intro-card">
@@ -513,6 +550,53 @@ h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
       </ul>
       <p class="small" style="margin-top:18px">Tu réponds à ce que tu sais. Chaque question a une sortie pour ce que tu ne sais pas — c'est fait exprès, répondre au hasard fausserait le résultat.</p>
     </div>
+
+    <div class="id-card">
+      <div class="id-grid">
+        <div class="id-field">
+          <label class="id-label" for="id-prenom">Prénom</label>
+          <input type="text" id="id-prenom" autocomplete="given-name" placeholder="Camille">
+        </div>
+        <div class="id-field">
+          <label class="id-label" for="id-nom">Nom</label>
+          <input type="text" id="id-nom" autocomplete="family-name" placeholder="Durand">
+        </div>
+      </div>
+
+      <div class="id-field">
+        <label class="id-label" for="id-tel">Numéro WhatsApp <span class="why">— pour t'envoyer le calculateur</span></label>
+        <div class="id-tel-row">
+          <select id="id-indicatif" aria-label="Indicatif">
+            <option value="33" selected>+33</option>
+            <option value="32">+32</option>
+            <option value="41">+41</option>
+            <option value="1">+1</option>
+            <option value="352">+352</option>
+            <option value="">Autre</option>
+          </select>
+          <input type="tel" id="id-tel" inputmode="tel" autocomplete="tel" placeholder="6 12 34 56 78">
+        </div>
+      </div>
+
+      <div class="id-gift">
+        <span class="eyebrow">En plus de ton résultat</span>
+        <p>Je t'envoie ton calculateur de métabolisme sur WhatsApp.</p>
+        <ul>
+          <li>Ton métabolisme de maintenance, calculé sur tes données</li>
+          <li>Ta cible en protéines</li>
+          <li>Tes planchers lipides et glucides</li>
+        </ul>
+        <p class="id-note">C'est moi qui l'envoie, à la main — laisse-moi un peu de temps.</p>
+      </div>
+
+      <p class="id-err" id="id-err"></p>
+    </div>
+
+    <div class="cta-zone">
+      <button class="btn btn-primary btn-hero btn-block" id="start-btn">Commencer le diagnostic</button>
+      <p class="id-note" style="margin-top:12px">Ton prénom et ton nom me servent juste à savoir à qui je réponds. Rien n'est revendu ni transmis.</p>
+    </div>
+
   </div>
 </section>
 
@@ -562,6 +646,7 @@ h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
         <h1 id="res-name"></h1>
         <p class="tagline" id="res-tagline"></p>
       </div>
+      <p class="small" style="margin-top:14px">Ton calculateur de métabolisme arrive sur WhatsApp.</p>
     </div>
 
     <!-- 2. Ratio blocages / potentiel -->
@@ -2189,6 +2274,9 @@ function buildPayload(extra){
   fd.append("id_contact", VISITE.id_contact);
   fd.append("source_lien", VISITE.source);
   fd.append("source", "diagnostic-recode");
+  fd.append("contact_prenom",  CONTACT.prenom);
+  fd.append("contact_nom",     CONTACT.nom);
+  fd.append("contact_whatsapp", CONTACT.tel);
   fd.append("profil", res ? res.arch.name : "");
   fd.append("profil_cle", res ? res.key : "");
   fd.append("attente", getExpectation() || "");
@@ -2246,6 +2334,35 @@ var VISITE = (function(){
   return v;
 })();
 
+/* ------------------------------------------------------------------
+   Coordonnées saisies avant la question 1. Le numéro est normalisé au
+   format international sans "+" (33612345678), directement utilisable
+   dans un lien wa.me. Indicatifs gérés : FR, BE, CH, CA/US, LU, et
+   "Autre" où elle tape son numéro complet avec son indicatif.
+   ------------------------------------------------------------------ */
+var CONTACT = { prenom:"", nom:"", tel:"" };
+
+function normPhone(){
+  var cc  = el("id-indicatif").value;
+  var raw = readField("id-tel").replace(/[^0-9+]/g, "");
+  raw = raw.replace(/\+/g, "");
+  raw = raw.replace(/^00/, "");
+  if(cc === ""){                      // "Autre" : numéro complet attendu
+    return raw.replace(/^0+/, "");
+  }
+  if(raw.indexOf(cc) === 0 && raw.length > cc.length + 6) raw = raw.slice(cc.length);
+  raw = raw.replace(/^0+/, "");
+  return cc + raw;
+}
+
+function validateIdentite(){
+  if(readField("id-prenom").length < 2) return "Il me faut ton prénom.";
+  if(readField("id-nom").length    < 2) return "Il me faut ton nom.";
+  var tel = normPhone();
+  if(tel.length < 8 || tel.length > 15) return "Ce numéro ne semble pas complet. Vérifie-le.";
+  return "";
+}
+
 /* Où elle en est. Sert à savoir ce qui est arrivé si elle quitte la page. */
 var progress = { started:false, maxQuestion:0, result:false, waClick:false, exitSent:false };
 
@@ -2260,7 +2377,10 @@ function pushBeacon(extra){
   if(navigator.sendBeacon){
     try { if(navigator.sendBeacon(SHEETS_ENDPOINT, fd)) return; } catch(e){}
   }
-  try { fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: fd }); } catch(e){}
+  try {
+    var r = fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: fd });
+    if(r && r.catch) r.catch(function(){});
+  } catch(e){}
 }
 
 /* Une seule ligne de sortie par visite, quoi qu'il arrive. */
@@ -2273,7 +2393,7 @@ function handleExit(){
     return;
   }
   if(!progress.waClick){
-    var pre = readField("wa-prenom"), ins = readField("wa-insta");
+    var pre = CONTACT.prenom || readField("wa-prenom"), ins = readField("wa-insta");
     if(pre || ins){
       progress.exitSent = true;
       pushBeacon({ evenement:"quitte_sans_clic", prenom:pre, instagram:ins });
@@ -2292,13 +2412,36 @@ function pushToSheet(extra){
     return;
   }
   try{
-    fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: buildPayload(extra) });
+    var req = fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: buildPayload(extra) });
+    if(req && req.catch) req.catch(function(){});   // un log qui échoue ne casse rien
   }catch(e){ /* silencieux : ne jamais casser l'expérience pour un log */ }
 }
 
 /* ============================================================
    8. INITIALISATION
    ============================================================ */
+
+function submitIdentite(){
+  var msg = validateIdentite();
+  if(msg){
+    el("id-err").textContent = msg;
+    el("id-err").className = "id-err on";
+    return;
+  }
+  el("id-err").className = "id-err";
+  CONTACT.prenom = readField("id-prenom");
+  CONTACT.nom    = readField("id-nom");
+  CONTACT.tel    = normPhone();
+
+  // Le prénom est déjà connu : on pré-remplit le champ du message final.
+  var wp = el("wa-prenom");
+  if(wp && !wp.value) wp.value = CONTACT.prenom;
+
+  // Ligne envoyée tout de suite : le numéro est récupéré même si elle abandonne.
+  pushToSheet({ evenement:"demarrage" });
+
+  startQuiz();
+}
 
 function startQuiz(){
   clearAnalysis();
@@ -2312,6 +2455,7 @@ function startQuiz(){
 function restart(){
   clearAnalysis();
   progress = { started:false, maxQuestion:0, result:false, waClick:false, exitSent:false };
+  CONTACT = { prenom:"", nom:"", tel:"" };
   state = { index:0, answers:{}, result:null };
   var blocks = document.querySelectorAll(".reveal");
   for(var i=0;i<blocks.length;i++) blocks[i].classList.remove("is-in");
@@ -2326,7 +2470,7 @@ function restart(){
 }
 
 function init(){
-  el("start-btn").addEventListener("click", startQuiz);
+  el("start-btn").addEventListener("click", submitIdentite);
   el("next-btn").addEventListener("click", goNext);
   el("back-btn").addEventListener("click", goBack);
   el("restart-btn").addEventListener("click", restart);
