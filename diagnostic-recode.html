@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diagnostic RECODE — Tu t'entraînes. Tu manges bien. Et tu stagnes.</title>
+<meta name="description" content="14 questions pour comprendre pourquoi ton corps ne répond plus. Gratuit, sans inscription.">
+<meta property="og:title" content="Tu t'entraînes. Tu manges bien. Et tu stagnes.">
+<meta property="og:description" content="14 questions pour trouver pourquoi. 4 minutes, aucune inscription.">
+<meta property="og:type" content="website">
+<script>
+/* ============================================================
+   THÈME — "dark" | "light" | "auto"
+   "auto" suit le réglage système de la visiteuse.
+   ============================================================ */
+var RECODE_THEME = "dark";
+(function(){
+  var t = RECODE_THEME;
+  if(t === "auto"){
+    t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+  }
+  document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "dark");
+  if(t === "light") document.documentElement.removeAttribute("data-theme");
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RECODE Coaching — Diagnostic interactif
+   Palette : #7C3AED / #EDE9FE / #C4B5FD / #FAFAFA / #F5F5F7 / #1D1D1F / #6E6E73
+   Typo : Open Sans 400 / 600 / 700 / 800
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* --- Thème clair (défaut) --- */
+:root{
+  --violet:#7C3AED;
+  --lavande:#EDE9FE;
+  --lavande-mid:#C4B5FD;
+  --violet-dark:#5C3ABE;
+
+  --bg:#FAFAFA;
+  --bg-alt:#F5F5F7;
+  --surface:#FFFFFF;
+  --noir:#1D1D1F;
+  --gris:#6E6E73;
+  --line:rgba(0,0,0,0.09);
+  --line-strong:#D2D2D7;
+
+  --accent-text:#7C3AED;      /* eyebrows, valeurs chiffrées */
+  --soft-bg:#EDE9FE;          /* chips, note-box, option sélectionnée */
+  --soft-txt:#5C3ABE;
+  --track:#EDE9FE;            /* fonds de barres et de donut */
+  --low:#1D1D1F;              /* barre d'une zone sous 40 % */
+
+  --card-dark:#1D1D1F;
+  --card-dark-border:1px solid transparent;
+  --header-bg:rgba(250,250,250,0.92);
+  --btn-border:1px solid transparent;
+  --placeholder:#A1A1A6;
+}
+
+/* --- Thème sombre — aligné sur la landing RECODE (#141416) --- */
+:root[data-theme="dark"]{
+  --bg:#141416;
+  --bg-alt:#1B1B20;
+  --surface:rgba(255,255,255,0.045);
+  --noir:#FFFFFF;             /* le "texte principal" devient blanc */
+  --gris:#9A9AA2;
+  --line:rgba(196,181,253,0.14);
+  --line-strong:rgba(196,181,253,0.32);
+
+  --accent-text:#C4B5FD;      /* règle branding : accents en C4B5FD sur fond dark */
+  --soft-bg:rgba(124,58,237,0.16);
+  --soft-txt:#C4B5FD;
+  --track:rgba(196,181,253,0.16);
+  --low:#C4B5FD;
+
+  --card-dark:linear-gradient(180deg,#221F2B,#17161B);
+  --card-dark-border:1px solid rgba(196,181,253,0.18);
+  --header-bg:rgba(20,20,22,0.86);
+  --btn-border:1px solid rgba(255,255,255,0.16);
+  --placeholder:#7E7E88;
+}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--noir);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
+:root[data-theme="dark"] body::before{
+  display:block;
+  background:radial-gradient(46% 38% at 12% 2%,rgba(124,58,237,.17),transparent 62%),
+             radial-gradient(44% 42% at 92% 99%,rgba(109,40,217,.14),transparent 62%);
+}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;display:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root[data-theme="dark"] body::after{display:block}
+.site-header,main,.site-footer{position:relative;z-index:1}
+
+/* Focus clavier visible — absent jusqu'ici */
+.btn:focus-visible,.opt:focus-visible{
+  outline:2px solid var(--accent-text);outline-offset:3px}
+
+.wrap{width:100%;max-width:640px;margin:0 auto;padding:0 20px}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--header-bg);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--noir)}
+.brand img{height:26px;width:auto;display:block}
+.brand .wordmark{font-size:15px;font-weight:800;letter-spacing:-0.02em}
+.brand .handle{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris)}
+
+/* ---------- Typo ---------- */
+h1{font-size:36px;font-weight:800;letter-spacing:-0.035em;line-height:1.02}
+h2{font-size:28px;font-weight:800;letter-spacing:-0.028em;line-height:1.08}
+h3{font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
+.eyebrow{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-text)}
+.eyebrow.muted{color:var(--gris)}
+.lead{font-size:17.5px;color:var(--gris);line-height:1.65;max-width:30em}
+.small{font-size:13.5px;color:var(--gris);line-height:1.65;max-width:34em}
+.tiny{font-size:11.5px;color:var(--gris);line-height:1.6;max-width:38em}
+/* Mesure de ligne : au-delà de ~65 caractères l'oeil décroche */
+.measure{max-width:33em}
+.accent-line{width:28px;height:3px;border-radius:2px;background:var(--violet)}
+
+/* ---------- Boutons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:52px;padding:14px 26px;
+  font-family:inherit;font-size:15px;font-weight:700;letter-spacing:-0.01em;
+  border:none;border-radius:10px;cursor:pointer;text-decoration:none;
+  transition:transform .16s ease,opacity .16s ease,background .16s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:scale(0.985)}
+.btn-primary{background:var(--violet);color:#fff;border:var(--btn-border)}
+.btn-primary:hover{background:#6D2FD9}
+.btn-ghost{background:transparent;color:var(--gris);min-height:44px;padding:10px 4px;font-size:13px;font-weight:700}
+.btn-soft{background:var(--soft-bg);color:var(--soft-txt);border:1px solid rgba(124,58,237,.22)}
+.btn-block{width:100%}
+/* Désactivé : pas une opacité, un état lisible — sinon le texte disparaît */
+.btn[disabled]{pointer-events:none;opacity:1;background:var(--bg-alt);color:var(--gris);
+  border:1px solid var(--line);box-shadow:none;animation:none}
+.btn[disabled]::after{display:none}
+
+/* CTA d'ouverture et CTA WhatsApp. Ils dominent par la couleur et la taille,
+   jamais par le mouvement : aucun reflet, aucun halo clignotant. */
+.btn-hero{position:relative;border:none}
+:root:not([data-theme="dark"]) .btn-hero{box-shadow:0 6px 20px rgba(124,58,237,.20)}
+:root[data-theme="dark"] .btn-hero{box-shadow:0 8px 28px rgba(124,58,237,.32)}
+.btn-hero:hover{box-shadow:0 10px 32px rgba(124,58,237,.38)}
+
+/* ---------- Écrans ---------- */
+.screen{display:none;padding:40px 0 64px}
+.screen.is-active{display:block;animation:screenIn .42s cubic-bezier(.22,.9,.3,1) both}
+@keyframes screenIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- Intro ---------- */
+#intro{padding-top:52px}
+#intro h1{margin:18px 0 0}
+#intro h1 .ln{display:block}
+#intro h1 .em{display:block;color:var(--accent-text)}
+#intro .lead{margin-top:18px}
+#intro .cta-zone{margin-top:32px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--soft-bg);border-radius:6px;padding:6px 11px;
+  font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--soft-txt);
+}
+.chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent-text);flex:none}
+.intro-card{
+  margin-top:36px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;
+}
+.intro-card ul{list-style:none;margin-top:14px;display:grid;gap:11px}
+.intro-card li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.6}
+.intro-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent-text)}
+
+/* ---------- Progression ---------- */
+.progress-shell{position:sticky;top:56px;z-index:40;background:var(--header-bg);
+  backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);
+  padding:16px 0 14px}
+.progress-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.progress-track{height:3px;background:var(--track);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:var(--violet);border-radius:2px;transition:width .45s cubic-bezier(.22,.9,.3,1)}
+
+/* ---------- Questions ---------- */
+.q-head{margin:26px 0 22px}
+.q-head h2{margin-top:12px}
+.q-hint{margin-top:10px;font-size:13.5px;color:var(--gris);line-height:1.6}
+.row-label{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--gris);margin:26px 0 10px;
+}
+.row-label:first-child{margin-top:0}
+.group-hint{font-size:12.5px;color:var(--gris);line-height:1.55;margin:-4px 0 12px;max-width:32em}
+.options{display:grid;gap:9px}
+.opt{
+  position:relative;display:flex;align-items:center;gap:12px;width:100%;
+  min-height:54px;padding:13px 16px;text-align:left;
+  font-family:inherit;font-size:15px;font-weight:600;line-height:1.45;color:var(--noir);
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;cursor:pointer;
+  transition:border-color .15s ease,background .15s ease,transform .12s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.opt:hover{border-color:var(--lavande-mid)}
+.opt:active{transform:scale(0.99)}
+.opt .mark{
+  flex:none;width:18px;height:18px;border:1.5px solid var(--line-strong);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;transition:all .15s ease;
+}
+.opt[data-shape="square"] .mark{border-radius:5px}
+.opt .mark span{width:8px;height:8px;border-radius:50%;background:var(--violet);transform:scale(0);transition:transform .18s cubic-bezier(.3,1.4,.5,1)}
+.opt[data-shape="square"] .mark span{border-radius:2px}
+.opt.is-selected{border-color:var(--violet);background:var(--soft-bg)}
+.opt.is-selected .mark{border-color:var(--violet)}
+.opt.is-selected .mark span{transform:scale(1)}
+.opt.is-neutral{background:var(--bg-alt)}
+.opt.is-neutral.is-selected{background:var(--soft-bg)}
+.opt .rank-badge{
+  flex:none;width:22px;height:22px;border-radius:6px;background:var(--violet);color:#fff;
+  font-size:11px;font-weight:800;display:none;align-items:center;justify-content:center;
+}
+.opt.is-ranked .rank-badge{display:flex}
+.opt.is-ranked .mark{display:none}
+.opt.is-ranked{border-color:var(--violet);background:var(--soft-bg)}
+.opt-sep{height:1px;background:var(--line);margin:6px 2px}
+
+/* Chaque question demande maintenant un clic sur "Continuer" :
+   la barre reste collée en bas pour ne jamais obliger à scroller pour la trouver. */
+.q-nav{
+  position:sticky;bottom:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin:30px -20px 0;
+  padding:34px 20px calc(16px + env(safe-area-inset-bottom));
+  /* Fondu vers le fond plutôt qu'un flou : rien ne transparaît sous le bouton */
+  background:linear-gradient(to top,var(--bg) 0%,var(--bg) 64%,transparent 100%);
+}
+.q-nav .btn-primary{flex:1}
+
+/* ---------- Écran d'analyse ---------- */
+#analysis{padding-top:120px}
+.an-steps{list-style:none;margin-top:40px;display:grid;gap:0}
+.an-steps li{
+  display:flex;align-items:center;gap:14px;padding:15px 0;
+  font-size:15px;font-weight:600;color:var(--gris);
+  border-top:1px solid var(--line);
+  opacity:.32;transform:translateY(6px);
+  transition:opacity .45s ease,transform .45s ease,color .45s ease;
+}
+.an-steps li:last-child{border-bottom:1px solid var(--line)}
+.an-steps li.is-on{opacity:1;transform:none;color:var(--noir)}
+.an-steps .tick{
+  flex:none;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .3s ease,background .3s ease;
+}
+.an-steps .tick::after{
+  content:"";width:7px;height:7px;border-radius:50%;background:var(--accent-text);
+  transform:scale(0);transition:transform .34s cubic-bezier(.3,1.5,.5,1);
+}
+.an-steps li.is-on .tick{border-color:var(--accent-text)}
+.an-steps li.is-on .tick::after{transform:scale(1)}
+
+/* ---------- Résultats ---------- */
+#results{padding-top:34px}
+.res-block{margin-bottom:44px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.9,.3,1)}
+.reveal.is-in{opacity:1;transform:none}
+
+.profile-card{background:var(--card-dark);border:var(--card-dark-border);border-radius:12px;padding:30px 24px 28px;color:#fff}
+.profile-card .profile-logo{display:block;height:66px;width:auto;margin-bottom:24px;opacity:.95}
+@media (min-width:600px){.profile-card .profile-logo{height:70px}}
+.profile-card .accent-line{background:var(--lavande-mid)}
+.profile-card .eyebrow{color:var(--lavande-mid);margin-top:16px;display:block}
+.profile-card h1{margin-top:10px;font-size:31px;color:#fff}
+.profile-card .tagline{margin-top:16px;font-size:18px;font-weight:700;font-style:italic;line-height:1.4;color:var(--lavande-mid)}
+
+.donut-wrap{display:flex;align-items:center;gap:26px;background:transparent;border:none;padding:8px 0 4px}
+.donut{position:relative;flex:none;width:124px;height:124px}
+.donut svg{transform:rotate(-90deg)}
+.donut .track{fill:none;stroke:var(--track);stroke-width:11}
+.donut .bar{fill:none;stroke:var(--violet);stroke-width:11;stroke-linecap:butt;transition:stroke-dashoffset 1.5s cubic-bezier(.22,.9,.3,1)}
+.donut .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .center b{font-size:29px;font-weight:800;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}
+.donut .center span{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gris);margin-top:5px}
+.donut-legend{display:grid;gap:14px}
+.donut-legend .item{display:flex;align-items:flex-start;gap:9px}
+.donut-legend .sq{flex:none;width:9px;height:9px;border-radius:2px;margin-top:6px}
+.donut-legend .sq.on{background:var(--violet)}
+.donut-legend .sq.off{background:var(--track)}
+.donut-legend .txt b{display:block;font-size:15px;font-weight:800;letter-spacing:-0.01em}
+.donut-legend .txt span{font-size:12.5px;color:var(--gris);line-height:1.5}
+
+.zones{display:grid;gap:4px;margin-top:26px}
+.zone{padding:16px 0;border-top:1px solid var(--line);transition:opacity .4s ease}
+.zone:first-child{border-top:none}
+.zone.is-muted{opacity:.46}
+.zone.is-focus .zone-name{font-size:17.5px;letter-spacing:-0.02em}
+.zone.is-focus .zone-val{font-size:15px}
+.zone.is-focus .zone-track{height:11px}
+.zone .zone-flag{
+  display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.16em;color:var(--accent-text);margin-bottom:7px;
+}
+.zone .zone-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px}
+.zone .zone-name{font-size:14.5px;font-weight:700;letter-spacing:-0.01em}
+.zone .zone-val{font-size:13px;font-weight:800;color:var(--accent-text);font-variant-numeric:tabular-nums}
+.zone .zone-val.is-low{color:var(--low)}
+.zone .zone-track{height:8px;background:var(--track);border-radius:4px;overflow:hidden}
+.zone .zone-bar{height:100%;width:0;background:var(--violet);border-radius:4px;transition:width 1.15s cubic-bezier(.22,.9,.3,1)}
+.zone .zone-bar.is-low{background:var(--low)}
+.zone .zone-note{font-size:12px;color:var(--gris);margin-top:7px;line-height:1.5}
+.zones-legend{margin-top:18px;padding:14px 16px;background:var(--bg-alt);border-radius:10px}
+
+/* ---------- Alerte signal ---------- */
+.alert{border-left:2px solid var(--accent-text);border-radius:0;padding:2px 0 2px 18px;margin-bottom:22px;
+  background:transparent}
+.alert .eyebrow{display:block;margin-bottom:7px;font-size:9.5px}
+.alert h3{font-size:15.5px;font-weight:800;letter-spacing:-.015em;line-height:1.35;margin-bottom:8px;max-width:26em}
+.alert p{font-size:14px;line-height:1.62;color:var(--gris);max-width:32em}
+.alert .alert-legal{font-size:12px;color:var(--gris);opacity:.75;font-style:italic;margin-top:9px}
+
+
+/* Traitement éditorial : pas de cadre, du vide et une hairline.
+   Le cadre est un aveu de faiblesse de mise en page. */
+.ed-block{padding:30px 0;border-top:1px solid var(--line)}
+.ed-block:first-child{border-top:none;padding-top:14px}
+.ed-block .eyebrow{display:block;margin-bottom:12px}
+.ed-block p{font-size:17px;line-height:1.6;color:var(--noir);letter-spacing:-0.005em;max-width:32em}
+
+.actions-list{margin-top:26px}
+
+/* ---------- Trois chantiers ---------- */
+.chantier{display:flex;gap:20px;align-items:flex-start;padding:28px 0;border-top:1px solid var(--line)}
+.chantier:first-of-type{border-top:none}
+.chantier .num{flex:none;width:34px;font-size:32px;font-weight:800;line-height:.9;
+  letter-spacing:-.04em;color:var(--accent-text);opacity:.32}
+.chantier h3{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px;max-width:26em}
+.chantier p{font-size:15px;line-height:1.68;color:var(--gris);max-width:31em}
+.wall{margin-top:26px;padding:22px 0 0;border-top:2px solid var(--accent-text)}
+.wall p{font-size:15.5px;line-height:1.65;color:var(--noir);max-width:32em;font-weight:600}
+
+/* ---------- Champs du CTA ---------- */
+.wa-fields{margin-top:24px}
+.wa-label{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--lavande-mid);margin:0 0 7px}
+.wa-fields input+.wa-label{margin-top:14px}
+.wa-fields input{width:100%;min-height:48px;padding:12px 15px;
+  font-family:inherit;font-size:16px;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(196,181,253,.22);border-radius:9px;
+  transition:border-color .15s ease,background .15s ease}
+.wa-fields input:focus{outline:none;border-color:var(--lavande-mid);background:rgba(255,255,255,.1)}
+.wa-fields input::placeholder{color:rgba(255,255,255,.32);font-weight:400}
+.cta-card .btn-hero{margin-top:20px}
+
+/* Aperçu vivant : elle voit se composer ce qu'elle va envoyer */
+.wa-prev-label{margin-top:22px;font-size:10.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--lavande-mid)}
+.wa-bubble{position:relative;margin-top:9px;padding:14px 16px 15px;
+  background:rgba(196,181,253,.09);border:1px solid rgba(196,181,253,.18);
+  border-radius:12px 12px 12px 3px;
+  font-size:13.5px;line-height:1.62;color:rgba(255,255,255,.9)}
+.wa-caret{display:inline-block;width:1px;margin-left:1px;color:var(--lavande-mid);
+  animation:caret 1.05s step-end infinite}
+@keyframes caret{0%,100%{opacity:1}50%{opacity:0}}
+.wa-bubble .fill{color:var(--lavande-mid);font-weight:700}
+.cta-card .wa-note{margin-top:11px;color:rgba(255,255,255,.5)}
+.ed-action{display:flex;gap:20px;align-items:flex-start;padding:28px 0;border-top:1px solid var(--line)}
+.ed-action:first-child{border-top:none}
+.ed-action .num{
+  flex:none;width:34px;font-size:32px;font-weight:800;line-height:.9;
+  letter-spacing:-0.04em;color:var(--accent-text);opacity:.32;
+}
+.ed-action p{font-size:15.5px;line-height:1.68;color:var(--noir);max-width:31em}
+
+/* Dernier bloc coloré ramené au même traitement que le reste : un filet, pas un aplat */
+.note-box{background:transparent;border:none;border-left:2px solid var(--accent-text);
+  border-radius:0;padding:4px 0 4px 20px;margin-top:30px}
+.note-box p{font-size:14px;line-height:1.7;color:var(--gris);max-width:32em;font-style:italic}
+.note-box p+p{margin-top:10px}
+
+/* ---------- CTA ---------- */
+.cta-card{background:var(--card-dark);border:var(--card-dark-border);border-radius:12px;padding:30px 24px}
+.cta-card .accent-line{background:var(--lavande-mid)}
+.cta-card .eyebrow{color:var(--lavande-mid);display:block;margin:16px 0 10px}
+.cta-card h2{color:#fff;font-size:24px}
+.cta-card p{font-size:14.5px;color:#fff;opacity:.72;margin-top:14px;line-height:1.65}
+.cta-card .btn-primary{margin-top:24px}
+/* ---------- Champs du CTA ---------- */
+.wa-fields{margin-top:24px}
+.wa-label{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--lavande-mid);margin:0 0 7px}
+.wa-fields input+.wa-label{margin-top:14px}
+.wa-fields input{width:100%;min-height:48px;padding:12px 15px;
+  font-family:inherit;font-size:16px;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(196,181,253,.22);border-radius:9px;
+  transition:border-color .15s ease,background .15s ease}
+.wa-fields input:focus{outline:none;border-color:var(--lavande-mid);background:rgba(255,255,255,.1)}
+.wa-fields input::placeholder{color:rgba(255,255,255,.32);font-weight:400}
+.cta-card .wa-fields .tiny{color:rgba(255,255,255,.5)}
+.cta-card .btn-hero{margin-top:22px}
+.ed-action{display:flex;gap:20px;align-items:flex-start;padding:28px 0;border-top:1px solid var(--line)}
+.ed-action:first-child{border-top:none}
+.ed-action .num{
+  flex:none;width:34px;font-size:32px;font-weight:800;line-height:.9;
+  letter-spacing:-0.04em;color:var(--accent-text);opacity:.32;
+}
+.ed-action p{font-size:15.5px;line-height:1.68;color:var(--noir);max-width:31em}
+
+/* Dernier bloc coloré ramené au même traitement que le reste : un filet, pas un aplat */
+.note-box{background:transparent;border:none;border-left:2px solid var(--accent-text);
+  border-radius:0;padding:4px 0 4px 20px;margin-top:30px}
+.note-box p{font-size:14px;line-height:1.7;color:var(--gris);max-width:32em;font-style:italic}
+.note-box p+p{margin-top:10px}
+
+/* ---------- CTA ---------- */
+.cta-card{background:var(--card-dark);border:var(--card-dark-border);border-radius:12px;padding:30px 24px}
+.cta-card .accent-line{background:var(--lavande-mid)}
+.cta-card .eyebrow{color:var(--lavande-mid);display:block;margin:16px 0 10px}
+.cta-card h2{color:#fff;font-size:24px}
+.cta-card p{font-size:14.5px;color:#fff;opacity:.72;margin-top:14px;line-height:1.65}
+.cta-card .btn-primary{margin-top:24px}
+/* ---------- Bloc coordonnées, intégré à l'accueil ----------
+   Volontairement plus discret que le reste : petits champs, libellés
+   en micro-capitales, aucun aplat. Il accompagne le CTA, il ne le
+   concurrence pas. */
+.id-card{margin-top:26px;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:20px}
+.id-intro{font-size:13.5px;line-height:1.6;color:var(--gris);max-width:32em;margin-bottom:18px}
+.id-intro b{color:var(--noir);font-weight:700}
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.id-field{margin-top:12px}
+.id-grid .id-field,.id-card .id-field:first-of-type{margin-top:0}
+.id-label{display:block;font-size:9.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--gris);margin-bottom:6px}
+.id-label .why{text-transform:none;letter-spacing:0;font-size:11px;font-weight:600;
+  color:var(--accent-text)}
+.id-card input,.id-card select{
+  width:100%;min-height:44px;padding:10px 13px;
+  font-family:inherit;font-size:15px;font-weight:600;color:var(--noir);
+  background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;
+  -webkit-appearance:none;appearance:none;transition:border-color .15s ease}
+.id-card input:focus,.id-card select:focus{outline:none;border-color:var(--violet)}
+.id-card input::placeholder{color:var(--placeholder);font-weight:400}
+.id-tel-row{display:grid;grid-template-columns:96px 1fr;gap:8px}
+.id-card select{font-size:14px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+  background-position:calc(100% - 17px) 19px,calc(100% - 12px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:30px}
+.id-note{font-size:11.5px;line-height:1.55;color:var(--gris);margin-top:10px;max-width:34em}
+
+/* Le "pourquoi" du numéro : c'est la contrepartie, elle doit se voir. */
+.id-gift{margin-top:18px;background:var(--soft-bg);border-radius:10px;padding:16px 18px}
+.id-gift .eyebrow{display:block;margin-bottom:9px}
+.id-gift p{font-size:14px;font-weight:600;line-height:1.55;color:var(--noir);max-width:32em}
+.id-gift ul{list-style:none;margin:11px 0 0;display:grid;gap:7px}
+.id-gift li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.5;color:var(--noir)}
+.id-gift li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent-text)}
+.id-gift .id-note{margin-top:12px;color:var(--gris)}
+.id-err{display:none;font-size:12px;font-weight:600;color:#D9455F;margin-top:14px}
+:root[data-theme="dark"] .id-err{color:#FF8095}
+.id-err.on{display:block}
+
+/* ---------- Bloc appel (masqué par défaut) ---------- */
+#call-block{display:none}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0 40px}
+.site-footer .tiny+.tiny{margin-top:8px}
+.site-footer a{color:var(--gris)}
+
+/* ---------- Responsive ---------- */
+@media (min-width:600px){
+  h1{font-size:52px}
+  .profile-card h1{font-size:46px}
+  h2{font-size:36px}
+  .ed-action .num,.chantier .num{font-size:40px;width:44px}
+  #analysis{padding-top:150px}
+  #intro{padding-top:64px}
+  .screen{padding:48px 0 72px}
+  .profile-card,.cta-card{padding:36px 32px}
+  .intro-card{padding:28px}
+}
+@media (max-width:359px){
+  h1{font-size:29px}
+  .opt{font-size:14.2px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#" onclick="return false;">
+      <span class="wordmark">RECODE</span>
+    </a>
+    <span class="handle">@indianaafit</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ÉCRAN INTRO ============ -->
+<section class="screen is-active" id="intro">
+  <div class="wrap">
+    <div class="accent-line"></div>
+    <h1><span class="ln">Tu t'entraînes.</span><span class="ln">Tu manges bien.</span><span class="em">Et tu stagnes.</span></h1>
+    <p class="lead">14 questions pour trouver pourquoi.</p>
+
+    <div class="meta-row">
+      <span class="chip"><span class="dot"></span>4 minutes</span>
+      <span class="chip"><span class="dot"></span>14 questions</span>
+      <span class="chip"><span class="dot"></span>Résultat immédiat</span>
+    </div>
+
+    <div class="intro-card">
+      <div class="accent-line"></div>
+      <p class="eyebrow" style="margin-top:13px;display:block">Ce que tu obtiens</p>
+      <h3 style="margin-top:9px">Une cause, pas un conseil de plus.</h3>
+      <ul>
+        <li>Le mécanisme précis qui bloque chez toi — parmi cinq possibles.</li>
+        <li>Tes six zones mesurées, de la plus solide à celle qui te coûte.</li>
+        <li>Ton angle mort : ce que tu ne vois pas et qui explique la stagnation.</li>
+        <li>Trois choses à faire cette semaine, sans rien acheter.</li>
+      </ul>
+      <p class="small" style="margin-top:18px">Tu réponds à ce que tu sais. Chaque question a une sortie pour ce que tu ne sais pas — c'est fait exprès, répondre au hasard fausserait le résultat.</p>
+    </div>
+
+    <div class="cta-zone">
+      <button class="btn btn-primary btn-hero btn-block" id="start-btn">Commencer le diagnostic</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ÉCRAN QUIZ ============ -->
+<section class="screen" id="quiz">
+  <div class="progress-shell">
+    <div class="wrap">
+      <div class="progress-head">
+        <span class="eyebrow muted" id="progress-label">Question 1 / 14</span>
+        <span class="eyebrow" id="progress-pct">7 %</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div id="question-host"></div>
+    <div class="q-nav">
+      <button class="btn btn-ghost" id="back-btn">Retour</button>
+      <button class="btn btn-primary" id="next-btn">Continuer</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÉCRAN COORDONNÉES ============ -->
+<section class="screen" id="contact">
+  <div class="wrap">
+    <div class="accent-line"></div>
+    <p class="eyebrow" style="margin-top:14px;display:block">Dernière étape</p>
+    <h2 style="margin-top:10px">Avant de découvrir ton profil.</h2>
+    <p class="lead" style="margin-top:16px">Ton prénom et ton compte me servent juste à savoir à qui je réponds. Ton numéro, à t'envoyer ton calculateur.</p>
+
+    <div class="id-card">
+      <div class="id-grid">
+        <div class="id-field">
+          <label class="id-label" for="id-prenom">Prénom</label>
+          <input type="text" id="id-prenom" autocomplete="given-name" placeholder="Camille">
+        </div>
+        <div class="id-field">
+          <label class="id-label" for="id-insta">Instagram</label>
+          <input type="text" id="id-insta" autocomplete="off" placeholder="@toncompte" maxlength="40">
+        </div>
+      </div>
+
+      <div class="id-field">
+        <label class="id-label" for="id-tel">Numéro WhatsApp <span class="why">— pour t'envoyer le calculateur</span></label>
+        <div class="id-tel-row">
+          <select id="id-indicatif" aria-label="Indicatif">
+            <option value="33" selected>+33</option>
+            <option value="32">+32</option>
+            <option value="41">+41</option>
+            <option value="1">+1</option>
+            <option value="352">+352</option>
+            <option value="">Autre</option>
+          </select>
+          <input type="tel" id="id-tel" inputmode="tel" autocomplete="tel" placeholder="6 12 34 56 78">
+        </div>
+      </div>
+
+      <div class="id-gift">
+        <span class="eyebrow">En plus de ton résultat</span>
+        <p>Je t'envoie ton calculateur de métabolisme sur WhatsApp.</p>
+        <ul>
+          <li>Ton métabolisme de maintenance, calculé sur tes données</li>
+          <li>Ta cible en protéines</li>
+          <li>Tes planchers lipides et glucides</li>
+        </ul>
+        <p class="id-note">C'est moi qui l'envoie, à la main — laisse-moi un peu de temps.</p>
+      </div>
+
+      <p class="id-err" id="id-err"></p>
+    </div>
+
+    <div class="cta-zone" style="margin-top:22px">
+      <button class="btn btn-primary btn-hero btn-block" id="contact-btn" type="button">Voir mon résultat</button>
+      <p class="id-note" style="margin-top:12px">Rien n'est revendu ni transmis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÉCRAN D'ANALYSE ============ -->
+<section class="screen" id="analysis">
+  <div class="wrap">
+    <div class="an-inner">
+      <div class="accent-line"></div>
+      <p class="eyebrow" style="margin-top:14px">Analyse en cours</p>
+      <h2 style="margin-top:10px">On croise tes réponses.</h2>
+      <p class="small" style="margin-top:12px">Aucune de tes réponses n'est lue seule. C'est le croisement qui donne le mécanisme.</p>
+      <ul class="an-steps" id="an-steps"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÉCRAN RÉSULTATS ============ -->
+<section class="screen" id="results">
+  <div class="wrap">
+
+    <!-- 1. Profil -->
+    <div class="res-block reveal">
+      <div class="profile-card">
+        <img class="profile-logo" alt="RECODE Coaching" src="data:image/png;base64,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">
+        <div class="accent-line"></div>
+        <span class="eyebrow">Ton profil</span>
+        <h1 id="res-name"></h1>
+        <p class="tagline" id="res-tagline"></p>
+      </div>
+      <p class="small" style="margin-top:14px">Ton calculateur de métabolisme arrive sur WhatsApp.</p>
+    </div>
+
+    <!-- 2. Ratio blocages / potentiel -->
+    <div class="res-block reveal">
+      <div class="accent-line"></div>
+      <h2 style="margin-top:14px">Où tu en es.</h2>
+      <p class="small" style="margin-top:10px;margin-bottom:20px">Calculé sur tes six zones. Ce n'est pas une note : c'est la part de ton travail qui produit réellement quelque chose aujourd'hui.</p>
+      <div class="donut-wrap">
+        <div class="donut">
+          <svg width="124" height="124" viewBox="0 0 124 124" aria-hidden="true">
+            <circle class="track" cx="62" cy="62" r="52"></circle>
+            <circle class="bar" id="donut-bar" cx="62" cy="62" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"></circle>
+          </svg>
+          <div class="center"><b id="donut-pct">0 %</b><span>Potentiel</span></div>
+        </div>
+        <div class="donut-legend">
+          <div class="item">
+            <span class="sq on"></span>
+            <span class="txt"><b id="legend-pot">0 %</b><span>de potentiel exploité</span></span>
+          </div>
+          <div class="item">
+            <span class="sq off"></span>
+            <span class="txt"><b id="legend-blk">0 %</b><span>de blocage identifié</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Zones -->
+    <div class="res-block reveal">
+      <div class="accent-line"></div>
+      <h2 style="margin-top:14px">Tes six zones.</h2>
+      <p class="small" style="margin-top:10px">Plus la barre est longue, plus la zone tient. Les barres courtes sont tes leviers, pas tes défauts.</p>
+      <div class="zones" id="zones-host"></div>
+      <div class="zones-legend">
+        <p class="tiny">Les zones 2 et 3 sont volontairement séparées. La zone 2 mesure <b>ce que tu manges</b>. La zone 3 mesure <b>comment tu vis le fait de manger</b>. On peut avoir un rapport parfaitement sain à la nourriture et manquer de protéines depuis trois ans — et l'inverse.</p>
+      </div>
+    </div>
+
+    <!-- 3 bis. Signaux à ne pas laisser de côté -->
+    <div class="res-block reveal" id="alerts-block" style="display:none">
+      <div id="alerts-host"></div>
+    </div>
+
+    <!-- 4. Insights -->
+    <div class="res-block reveal">
+      <div class="accent-line"></div>
+      <h2 style="margin-top:14px">Ce que ça dit de toi.</h2>
+      <p class="small" style="margin-top:10px;margin-bottom:20px" id="res-desc-intro"></p>
+      <div id="res-desc" style="margin-bottom:34px"></div>
+      <div class="ed-block">
+        <span class="eyebrow">Ta force</span>
+        <p id="res-force"></p>
+      </div>
+      <div class="ed-block">
+        <span class="eyebrow">Ton levier</span>
+        <p id="res-levier"></p>
+      </div>
+      <div class="ed-block">
+        <span class="eyebrow">Ton angle mort</span>
+        <p id="res-angle"></p>
+      </div>
+      <div class="note-box" id="res-note" style="display:none"><p id="res-note-text"></p></div>
+    </div>
+
+    <!-- 5. Trois chantiers -->
+    <div class="res-block reveal">
+      <div class="accent-line"></div>
+      <h2 style="margin-top:14px">Par où ça se reprend.</h2>
+      <p class="small" style="margin-top:10px">Trois chantiers, dans l'ordre où ils comptent pour ton profil.</p>
+      <div id="plan-host"></div>
+      <div class="wall" id="plan-wall"></div>
+    </div>
+
+    <!-- 6. CTA WhatsApp -->
+    <div class="res-block reveal">
+      <div class="cta-card">
+        <div class="accent-line"></div>
+        <span class="eyebrow">Une question ?</span>
+        <h2>Si tu veux creuser un point, je suis là.</h2>
+        <p>Tu as de quoi t'y mettre. Si en lisant ça une question précise s'est posée — sur ton cas, sur l'ordre des choses, sur un truc qui ne colle pas avec ce que tu vis — envoie-la-moi. Je réponds moi-même, et ça n'engage rien.</p>
+
+        <div class="wa-fields">
+          <label class="wa-label" for="wa-prenom">Ton prénom</label>
+          <input type="text" id="wa-prenom" autocomplete="given-name" placeholder="Élodie" maxlength="40">
+          <label class="wa-label" for="wa-insta">Ton compte Instagram</label>
+          <input type="text" id="wa-insta" autocomplete="off" placeholder="@toncompte" maxlength="40">
+        </div>
+
+        <p class="wa-prev-label">Ce que tu vas m'envoyer</p>
+        <div class="wa-bubble"><span id="wa-preview"></span><span class="wa-caret">|</span></div>
+        <p class="tiny wa-note">Tu pourras le compléter avant de l'envoyer. Ton prénom et ton compte me servent juste à savoir à qui je réponds.</p>
+
+        <a class="btn btn-primary btn-hero btn-block" id="wa-btn" href="#" target="_blank" rel="noopener">Ouvrir WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- 8. Bloc appel — écrit, stylé, masqué (SHOW_CALL_CTA) -->
+    <div class="res-block reveal" id="call-block">
+      <div class="cta-card">
+        <div class="accent-line"></div>
+        <span class="eyebrow">Si tu préfères en parler</span>
+        <h2>Je relis ton diagnostic avec toi — 20 min, en visio.</h2>
+        <p>On reprend tes six zones ensemble, je te dis ce que je vois dans ton cas et par quoi je commencerais. Tu repars avec une direction claire, que tu travailles avec moi ou seule.</p>
+        <a class="btn btn-primary btn-block" id="call-btn" href="#" target="_blank" rel="noopener">Choisir un créneau</a>
+      </div>
+    </div>
+
+    <!-- 9. Mention légale -->
+    <div class="res-block">
+      <p class="tiny" id="legal-result">Cet outil ne pose aucun diagnostic médical et ne remplace pas un avis professionnel. Un bilan sanguin produit des hypothèses d'interprétation, pas un diagnostic. Ce questionnaire non plus.</p>
+      <button class="btn btn-ghost" id="restart-btn" style="margin-top:14px">Refaire le diagnostic</button>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="tiny">RECODE Coaching — Kevin · <a href="https://instagram.com/indianaafit" target="_blank" rel="noopener">@indianaafit</a> · contact@coaching-indianaafit.fr</p>
+    <p class="tiny">Ce diagnostic est un outil d'orientation. Il ne remplace pas un avis médical et ne pose aucun diagnostic.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+/* ============================================================
+   1. CONFIGURATION — les 3 éléments à personnaliser
+   ============================================================ */
+
+var WHATSAPP_NUMBER = "33677705047";   // format international, sans + ni espaces. Ex : 33612345678
+var SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwu-f6q0-juToA33HhWDoWikUFYP1EXB5U6l0_KWf7wzMxip-zWXkyFbaG8iIDEMQMf/exec";
+var CALL_LINK       = "LIEN_RDV_A_REMPLACER";          // lien de réservation — inutilisé tant que SHOW_CALL_CTA est false
+
+var SHOW_CALL_CTA = false;   // passer à true le jour où le calendrier est ouvert
+
+/* Le thème se règle dans le <head>, en haut du fichier : var RECODE_THEME = "dark";
+   Valeurs possibles : "dark" (défaut), "light", "auto" (suit le réglage système). */
+
+/* ============================================================
+   2. ZONES ET ARCHÉTYPES
+   ============================================================ */
+
+var ZONES = [
+  { id:"Z1", name:"Terrain physiologique",   note:"Récupération, cycle, énergie, digestion." },
+  { id:"Z2", name:"Structure de la diète",   note:"Apports, régularité, construction des repas." },
+  { id:"Z3", name:"Relation à l'alimentation", note:"Stabilité, souplesse du cadre, culpabilité." },
+  { id:"Z4", name:"Structure d'entraînement", note:"Programmation, progression, données." },
+  { id:"Z5", name:"Cap et constance",         note:"Clarté de l'objectif, stabilité du plan dans le temps." },
+  { id:"Z6", name:"Charge et récupération",   note:"Volume total, second sport, sommeil, stress, contraintes." }
+];
+
+var ARCHETYPES = {
+  T: {
+    name:"Terrain sous contrainte",
+    tagline:"Ton corps n'est pas fainéant. Il est sous contrainte.",
+    blind:"je traite mes signaux physiologiques comme un contexte et pas comme des données",
+    desc:[
+      "Tu appliques des méthodes qui fonctionnent. Le problème n'est pas la méthode, c'est le terrain sur lequel tu l'appliques. Les signaux que tu as cochés ne sont pas des désagréments à côté de ton entraînement : ils décrivent un organisme qui arbitre. Quand les ressources manquent de façon durable, un corps ne dit pas non à la construction musculaire par mauvaise volonté — il la classe comme non prioritaire, derrière ce qui le maintient en fonctionnement immédiat.",
+      "C'est pour ça que la logique habituelle se retourne contre toi. Ajouter une séance, couper des calories, serrer un peu plus : sur un terrain déjà contraint, ces trois leviers augmentent la contrainte au lieu de la lever. Tu appliques plus de pression sur un système qui est en train de te dire qu'il n'en absorbe déjà plus.",
+      "Ce que ça implique n'est pas d'arrêter. C'est de traiter tes signaux comme des données de pilotage, au même titre que tes charges. Aujourd'hui, tu pilotes en ignorant la moitié de tes instruments."
+    ],
+    force:"Tu es régulière et tu encaisses. La constance est la variable la plus difficile à installer chez quelqu'un, et elle est déjà là.",
+    levier:"Rendre ton terrain lisible avant de chercher à optimiser quoi que ce soit. Aucun réglage fin ne tient sur des fondations qu'on n'a pas mesurées.",
+    angle:"Tu ranges ta fatigue, ton cycle et ta digestion dans « ma vie », et tes séances dans « mon entraînement ». Ce sont les mêmes ressources.",
+    note:"Ce que tu lis ici n'est pas un diagnostic. Ce sont des signaux à explorer, pas une pathologie.",
+    actions:[
+      "Chaque matin, dix secondes, trois notes : énergie au réveil, qualité de la nuit, et où tu en es dans ton cycle si tu le suis. Quatre semaines, sans rien changer d'autre. Tu ne cherches pas à corriger, tu cherches à avoir enfin quelque chose à mettre en face de tes séances.",
+      "Prends une semaine ordinaire et note ce que tu manges réellement — pas ce que tu penses manger. Sans corriger en cours de route, sinon tu mesures autre chose. L'écart entre les deux est presque toujours plus grand que prévu.",
+      "Fais un bilan sanguin. Pas pour obtenir un diagnostic — pour obtenir des valeurs. Un bilan ne dit jamais « voilà ton problème » : il produit des hypothèses d'interprétation, et ces hypothèses dépendent entièrement de ce que tu fais à côté. Une même valeur ne veut pas dire la même chose chez une femme qui s'entraîne six fois par semaine et chez une femme sédentaire — c'est le contexte qui la rend lisible, pas la norme imprimée sur la feuille. Ajoute à ça qu'un bilan standard ne couvre pas la moitié de ce qui nous intéresse ici. C'est le point exact où la plupart des femmes s'arrêtent : des résultats « dans les normes », et toujours aucune explication."
+    ]
+  },
+  C: {
+    name:"Contrôle instable",
+    tagline:"Le problème n'est pas ton cadre. C'est qu'il ne supporte aucun écart.",
+    blind:"je juge mes journées en tout ou rien",
+    desc:[
+      "Être cadrée n'est pas un problème. Beaucoup de femmes tiennent un cadre strict pendant des années sans que ça leur coûte quoi que ce soit. Ce que tu as coché décrit autre chose : un cadre qui ne tolère aucun écart. Des règles binaires, où un aliment hors plan ne fait pas dévier la journée, il l'annule. Et une journée annulée ne se poursuit pas — elle se termine, et on recommence demain.",
+      "C'est ce fonctionnement en tout-ou-rien qui produit l'alternance, pas ta volonté ni ton caractère. Il a deux conséquences concrètes. La première est mentale : tu dépenses sur l'alimentation une quantité d'attention considérable, et cette attention n'est plus disponible ailleurs. La seconde est technique, et personne ne t'en parle : tes apports deviennent illisibles d'une semaine à l'autre. Impossible de savoir ce que tu manges réellement en moyenne, donc impossible d'ajuster quoi que ce soit. On ne règle pas un système dont on ne connaît pas l'état.",
+      "Le chantier n'est pas de contrôler moins. C'est de construire un cadre qui survit à un écart."
+    ],
+    force:"Tu es capable de tenir des règles exigeantes pendant des semaines d'affilée. C'est une capacité réelle, et elle est rare. Elle est simplement appliquée à un cadre qui ne peut pas encaisser l'imprévu.",
+    levier:"Rendre tes règles tolérantes à l'écart, sans les supprimer.",
+    angle:"Tu juges tes journées en binaire : réussie ou ratée. Une journée à 80 % est classée comme un échec, et tu la traites comme tel.",
+    note:"Une précision qui compte, et qu'on te dira rarement : il existe une différence nette entre un cadre trop rigide et un trouble alimentaire constitué. Vus de l'extérieur, les deux se ressemblent — mêmes règles, mêmes écarts, même culpabilité. Ils n'appellent pas du tout la même réponse, et appliquer la mauvaise aggrave la situation. C'est la toute première chose à trancher avant de toucher à quoi que ce soit d'autre. Et ça ne se tranche pas dans un questionnaire.",
+    actions:[
+      "Pendant deux semaines, à chaque écart, note trois choses : l'heure, ce qui s'était passé dans les heures d'avant, et ce que tu t'étais interdit ce jour-là. Tu ne changes rien. Tu cherches un schéma, pas une correction.",
+      "Prends une de tes règles alimentaires et écris en une phrase pourquoi tu l'appliques. Si aucune phrase ne vient, c'est une règle héritée, pas une règle utile. Fais l'exercice sur cinq règles et regarde combien survivent.",
+      "La prochaine fois qu'une journée dérape, reprends au repas suivant au lieu de reporter au lendemain. Une seule fois. Note ce que ça te fait — c'est en général beaucoup plus difficile que ça n'en a l'air, et c'est cette difficulté qui est l'information, pas le repas."
+    ]
+  },
+  S: {
+    name:"Effort sans structure",
+    tagline:"Tu en fais beaucoup. Rien n'est construit pour que ça compte.",
+    blind:"je confonds séance dure et progression réelle",
+    desc:[
+      "Tu travailles dur, et ça se voit dans tes réponses. Ce qui manque, c'est ce qui transforme ce travail en résultat mesurable. Ton volume d'entraînement existe, mais il se répartit au fil des séances plutôt que selon un plan. Tes charges ne suivent pas de progression organisée. Et tu ne sais pas ce que tu manges — pas parce que tu manges mal, mais parce que « clean » n'est pas une unité de mesure. Un bon aliment en quantité insuffisante produit le même résultat qu'un mauvais choix : rien du tout.",
+      "Le piège tient à ce que tu ressens. Tes séances sont dures, et c'est vrai. Mais la difficulté ressentie et la surcharge progressive sont deux choses différentes. On peut souffrir pendant deux ans sur les mêmes charges, avec la certitude sincère de se donner à fond.",
+      "Sans données, tu n'as accès à aucun des deux leviers qui font bouger une composition corporelle. Tu ne peux ni confirmer que ça marche, ni identifier ce qui ne marche pas. Tu ne stagnes pas par manque d'effort. Tu stagnes parce que rien n'est mesuré."
+    ],
+    force:"Le volume et la régularité sont là. C'est la partie longue à installer. La structure, elle, se met en place en quelques semaines.",
+    levier:"Mesurer deux choses seulement, et les tenir assez longtemps pour qu'elles disent quelque chose.",
+    angle:"Tu prends la difficulté d'une séance pour une preuve de progression. Une séance dure sans charge qui monte, c'est de la fatigue, pas du stimulus.",
+    note:"",
+    actions:[
+      "De mémoire, essaie d'écrire les charges de tes trois dernières séances sur tes exercices principaux. Si tu n'y arrives pas, tu viens de trouver pourquoi tu ne peux pas savoir si tu progresses — et c'est le seul constat dont tu as besoin cette semaine.",
+      "Sur une semaine normale, note ce que tu manges sans rien changer, puis regarde ce que ça donne en protéines. Pas pour corriger : pour voir l'écart entre ce que tu crois et ce qui est.",
+      "Pour chaque groupe musculaire, choisis deux ou trois exercices que tu gardes quoi qu'il arrive pendant les huit prochaines semaines. Ce sont ceux-là que tu notes, et ceux-là seuls sur lesquels tu cherches à monter en charge — le reste de ta séance peut varier autant que tu veux. Si tu n'arrives pas à décider lesquels garder, ce n'est pas un problème de choix : c'est que ton programme n'a pas de colonne vertébrale, et c'est ça le vrai chantier."
+    ]
+  },
+  K: {
+    name:"Cap qui change",
+    tagline:"Un plan moyen tenu bat un plan parfait qu'on change tous les deux mois.",
+    blind:"je change de plan au moment exact où ça allait commencer à payer",
+    desc:[
+      "Tu n'as pas un problème d'effort, et probablement pas un problème de connaissances non plus — tu en sais plus que la moyenne. Ce que tes réponses décrivent, c'est un problème de durée. Tu lances quelque chose, tu tiens quelques semaines, les résultats ralentissent, tu conclus que ça ne fonctionne pas, tu changes. Et le compteur repart à zéro.",
+      "Ce qui rend ce schéma difficile à voir de l'intérieur, c'est que le moment où tu changes est presque toujours le moment où ça allait devenir intéressant. Une composition corporelle se lit sur plusieurs mois, pas sur quatre semaines. En coupant tôt, tu ne collectes jamais assez de données pour savoir si ce que tu faisais valait quelque chose. Tu accumules des débuts, et un début ne produit rien.",
+      "S'y ajoute souvent une contradiction de direction : vouloir perdre du gras et prendre du muscle en même temps, alterner les phases sans jamais en laisser une aller au bout. Deux forces opposées à pleine puissance donnent un déplacement nul — et beaucoup de fatigue."
+    ],
+    force:"Tu testes, tu t'informes, tu ne subis pas. Cette curiosité est un vrai atout ; elle a juste besoin d'un cadre temporel pour produire autre chose que des essais.",
+    levier:"Une direction unique, tenue sur un horizon qui dépasse largement le tien aujourd'hui, avec un critère de réussite décidé à l'avance.",
+    angle:"Tu changes quand les résultats ralentissent. C'est le signal le plus trompeur qui existe : un ralentissement n'est pas un verdict, c'est une étape normale.",
+    note:"",
+    actions:[
+      "Écris la liste de tout ce que tu as lancé sur les douze derniers mois, avec la durée réelle de chaque essai à côté. Ne juge rien, regarde juste la colonne des durées. C'est souvent le moment où le schéma devient impossible à ignorer.",
+      "Réduis ton objectif à une seule phrase, une seule direction, une seule date. Si tu n'y arrives pas, tu n'as pas un problème de méthode : tu n'as pas encore tranché, et c'est ça qu'il faut traiter d'abord.",
+      "Pose une date de revue à un an. Pas huit semaines, pas trois mois : un an. Et écris maintenant ce qui te ferait dire, ce jour-là, que ça a marché. C'est le plus inconfortable des trois exercices, parce qu'il t'enlève l'option de changer d'avis en cours de route. Regarde ce que tu ressens en écrivant cette date. Si elle te paraît insupportablement loin, tu viens de mesurer très précisément ce qui te bloque depuis des années — et ce n'est ni ton programme ni ta diète."
+    ]
+  },
+  X: {
+    name:"Corps surchargé",
+    tagline:"Tu ne récupères pas de tout ce que tu fais à côté.",
+    blind:"je compte mes séances de muscu et pas le reste",
+    desc:[
+      "Ton entraînement n'est pas le problème. C'est le total qui l'est. Entre tes séances de musculation, ton second sport, une charge professionnelle réelle, un sommeil qui ne suit pas et — souvent — une contrainte physique que tu contournes sans la traiter, ton corps reçoit plus de stimulus qu'il n'a de ressources pour les transformer. L'adaptation ne se produit pas pendant la séance : elle se produit après, s'il reste de quoi la financer.",
+      "Le piège est comptable. Tu comptes tes séances de musculation, parce que ce sont celles que tu programmes. Tu ne comptes pas les heures de ton second sport, ni les journées passées debout, ni les nuits trop courtes. Vu de tes articulations et de ton système nerveux, tout compte pareil.",
+      "Quand une contrainte structurelle s'ajoute — hernie, arthrose, post-opératoire, articulation instable — la question n'est plus seulement le volume, c'est la sélection. Une phase de stabilisation passe avant tout focus hypertrophique. Ce n'est pas un retour en arrière : c'est ce qui rend la suite possible."
+    ],
+    force:"Ta capacité de travail est rare. Presque personne ne tient cette charge sur la durée. Il ne s'agit pas d'en faire moins par principe, il s'agit d'en faire moins pour que ça compte enfin.",
+    levier:"Faire baisser la charge totale sans toucher à la qualité, et regarder ce que le corps fait de la marge récupérée.",
+    angle:"Tu programmes la musculation et tu considères le reste comme du bonus. Ton corps, lui, additionne tout.",
+    note:"Sur une contrainte structurelle, la question n'a jamais été « est-ce que je peux m'entraîner ». La réponse est presque toujours oui. La vraie question est laquelle des variantes d'un mouvement ta structure tolère aujourd'hui, à quelle amplitude, et à quelle condition — et c'est un travail de sélection, pas d'interdiction. La différence entre les deux approches, c'est ce qui sépare deux ans d'évitement d'une progression réelle.",
+    actions:[
+      "Sur sept jours, note toutes tes heures d'activité — tous sports confondus, déplacements actifs et journées debout inclus — et tes heures de sommeil. Mets les deux totaux côte à côte, sans commentaire. Beaucoup de choses deviennent évidentes à ce moment-là.",
+      "Retire une séance pendant trois semaines. Une seule. L'intérêt n'est pas la séance en moins : c'est ce que tu ressens à l'idée de la retirer, et ce que ton corps fait pendant ces trois semaines. Les deux informations sont utiles.",
+      "Si tu as une contrainte physique, écris précisément quels mouvements tu évites, et depuis combien de temps. Une contrainte contournée depuis deux ans n'est plus une contrainte : c'est devenue ta programmation par défaut, et personne ne l'a jamais décidé."
+    ]
+  },
+  NONE: {
+    name:"Rien n'est cassé",
+    tagline:"Tes six zones tiennent. Et c'est ça, l'information.",
+    blind:"aucune de mes zones ne descend, et je stagne quand même",
+    desc:[
+      "Ton entraînement est structuré, tes apports sont maîtrisés, ton terrain ne montre pas de signal marquant, et ta relation à la nourriture ne te coûte rien. Attention à ce que ça veut dire exactement : ce n'est pas « tout va bien », c'est « rien de ce qui se déclare ne cloche ». Un questionnaire ne voit ni ce que tu n'as jamais mesuré, ni ce que tu as pris l'habitude de considérer comme normal. Il restreint le champ des causes, il ne le vide pas.",
+      "Ce qui reste, ce sont les trois choses que quatorze questions ne voient pas. Ton exécution réelle — la tension que tu produis vraiment sur un mouvement, pas celle que tu ressens. La répartition de ton volume entre les groupes musculaires, qui peut être déséquilibrée à l'intérieur d'un programme par ailleurs bien construit. Et l'écart entre ce que tu déclares et ce qui se passe réellement, qui existe chez tout le monde, y compris chez les femmes les plus rigoureuses.",
+      "Il y a une quatrième possibilité, moins agréable et rarement dite : après plusieurs années d'entraînement sérieux, un ralentissement peut être normal. Le rythme de progression d'une pratiquante avancée n'a rien à voir avec celui de ses deux premières années. Dans ce cas, ce n'est pas ton corps qui pose problème, c'est le repère avec lequel tu le juges."
+    ],
+    force:"Tu as construit, sans accompagnement, ce que la plupart des femmes mettent des années à mettre en place. Rien de ce que tu fais n'est à jeter.",
+    levier:"Passer de ce qui se déclare à ce qui se vérifie : exécution, répartition du volume, et écart entre le prévu et le réel.",
+    angle:"Tu cherches une erreur qui n'existe pas. Ce profil est le plus frustrant à porter, parce que tout ce qu'on te conseillera en général, tu le fais déjà.",
+    note:"",
+    actions:[
+      "Filme trois séries lourdes sur tes deux exercices principaux, de profil, en entier. Regarde-les le lendemain, à froid. L'amplitude réelle et la vitesse de la dernière répétition disent des choses que la sensation ne dit pas.",
+      "Reprends ton programme et compte, par groupe musculaire, le nombre de séries réellement dures que tu fais chaque semaine. Pas les séries totales : celles qui comptent. Le déséquilibre est presque toujours plus marqué que prévu.",
+      "Reprends tes trois derniers mois de données et regarde uniquement la tendance, pas les valeurs. Si quelque chose monte, même lentement, la question n'est plus « pourquoi ça ne marche pas » mais « à quelle vitesse est-ce que je devrais réellement progresser à mon niveau ». Ce n'est pas la même conversation."
+    ]
+  }
+};
+
+/* ============================================================
+   2 bis. PLANS D'ACTION PAR PROFIL
+   Trois phases : Stabiliser, Mesurer, Ajuster.
+   La troisième contient les arbitrages qui ne se prennent pas seule.
+   ============================================================ */
+
+var PLANS = {
+ "T": {
+  "actions": [
+   [
+    "Arrête d'ajouter. Commence par alléger.",
+    "Face à la stagnation, le réflexe est d'en faire plus. Chez toi, c'est exactement l'inverse qui débloque : allège un peu ta charge totale — pas ton engagement, ton volume — et regarde ce que ton corps fait de la marge récupérée. Ce qui se discute, c'est combien, à quel endroit, et pendant combien de temps. Trop peu ne se verra pas ; trop d'un coup te fera paniquer et tout reprendre au bout de dix jours."
+   ],
+   [
+    "Mets des chiffres sur ce que tu ressens.",
+    "Tes signaux sont aujourd'hui des impressions. Note chaque matin ton niveau d'énergie, la qualité de ta nuit, et où tu en es dans ton cycle si tu le suis. En quelques semaines tu auras une courbe à poser à côté de tes séances — ce sera la première fois que ces deux choses se parlent. Ce que cette courbe raconte, en revanche, ne se lit pas tout seul : c'est le croisement avec ta charge et tes apports qui donne le sens."
+   ],
+   [
+    "Va chercher les valeurs que tu n'as pas.",
+    "Un bilan sanguin te donnera des chiffres, pas une réponse. Demande-le complet : un bilan standard ne couvre pas la moitié de ce qui compte ici. Et prépare-toi à la suite, parce que c'est là que la plupart des femmes s'arrêtent — une même valeur ne se lit pas pareil chez une femme qui s'entraîne six fois par semaine et chez une femme sédentaire. Des résultats « dans les normes » et toujours aucune explication, c'est le scénario le plus fréquent."
+   ]
+  ],
+  "wall": "Ces trois chantiers ne s'attaquent pas dans n'importe quel ordre, et aucun ne se lit indépendamment des deux autres. Remonter tes apports pendant que tu allèges ta charge, par exemple, rend le résultat impossible à interpréter — tu ne sauras pas ce qui a produit quoi."
+ },
+ "C": {
+  "actions": [
+   [
+    "Répare le cadre, pas la discipline.",
+    "Ton premier réflexe après un écart est de resserrer. C'est ce resserrement qui prépare le suivant. Le chantier n'est pas de mieux tenir : c'est de construire un cadre qui survit à un écart sans que la journée entière bascule. Concrètement, ça veut dire reprendre au repas suivant au lieu de reporter au lendemain — et ça paraît anodin tant qu'on ne l'a pas essayé."
+   ],
+   [
+    "Regarde ce qui se passe avant l'écart, pas pendant.",
+    "Note à chaque fois trois choses : l'heure, quand tu as mangé pour la dernière fois, et comment tu as dormi la nuit d'avant. Tu cherches un schéma, pas une faute. Il y en a presque toujours un, et il est rarement là où tu le cherches — le soir est le moment où la facture arrive, pas celui où elle se crée."
+   ],
+   [
+    "Sors une règle du lot et interroge-la.",
+    "Prends une de tes règles alimentaires et écris, en une phrase, pourquoi tu l'appliques. Si aucune phrase ne vient, c'est une règle héritée, pas une règle utile. Fais l'exercice sur plusieurs et regarde combien survivent. Ce qui reste à trancher, ensuite, c'est lesquelles gardent une fonction réelle et lesquelles ne font qu'ajouter de la pression — et ça, de l'intérieur, c'est très difficile à voir."
+   ]
+  ],
+  "wall": "Ces trois chantiers avancent ensemble ou pas du tout. Assouplir le cadre sans avoir identifié les déclencheurs donne l'impression de lâcher prise ; identifier les déclencheurs sans assouplir le cadre ne change rien. C'est le nœud de ton profil."
+ },
+ "S": {
+  "actions": [
+   [
+    "Fige ce que tu fais.",
+    "Choisis quelques exercices par groupe musculaire et garde-les, sans y toucher, pendant plusieurs semaines. Ce n'est pas une question de bon programme : c'est la condition minimale pour observer quoi que ce soit. Tant que les mouvements changent, aucune progression n'est comparable d'une semaine à l'autre. Combien de temps figer, et lesquels garder, dépend de ce que tu récupères — c'est le premier arbitrage que tu ne peux pas faire à l'aveugle."
+   ],
+   [
+    "Écris ce que tu soulèves.",
+    "À chaque série de tes exercices principaux : la charge, les répétitions. Un carnet suffit. Aujourd'hui tu juges tes séances à leur difficulté, et la difficulté vient de la fatigue autant que du stimulus — on peut souffrir pendant deux ans sur les mêmes charges avec la certitude sincère de se donner à fond. Une fois les chiffres écrits, reste à savoir ce qu'on fait monter en premier, et de combien."
+   ],
+   [
+    "Regarde ce que tu manges vraiment.",
+    "Note une semaine ordinaire sans rien corriger pendant la mesure, sinon tu mesures autre chose. Puis regarde ce que ça donne en protéines. Ton profil ne mange pas mal — il mange à l'aveugle, et c'est un problème complètement différent, qui n'a rien à voir avec la discipline. L'écart entre ce que tu crois et ce qui est, chez la plupart des femmes qui font cet exercice, est plus grand que prévu."
+   ]
+  ],
+  "wall": "Les trois se tiennent : figer sans mesurer ne sert à rien, mesurer sans figer ne mesure rien, et corriger les apports sans savoir où en est ton entraînement revient à changer deux variables à la fois. Le piège de ton profil, c'est de faire les trois séparément et de conclure que ça ne marche pas."
+ },
+ "K": {
+  "actions": [
+   [
+    "Choisis une direction. Une seule.",
+    "Écris ton objectif en une phrase, avec une seule direction et une date lointaine. Si tu n'arrives pas à le réduire à une chose, tu n'as pas un problème de méthode : tu n'as pas encore tranché, et c'est ça le vrai chantier. Perdre du gras et prendre du muscle sont deux consignes opposées ; menées en même temps sur des cycles courts, elles donnent un déplacement nul et beaucoup de fatigue."
+   ],
+   [
+    "Repousse ta prochaine décision.",
+    "Pose une date de revue nettement plus loin que ce que tu fais d'habitude, et écris dès maintenant ce qui te ferait dire, ce jour-là, que ça a marché. Regarde ce que tu ressens en écrivant cette date : si elle te paraît insupportablement loin, tu viens de mesurer très précisément ce qui te bloque depuis des années. Et ce n'est ni ton programme ni ta diète."
+   ],
+   [
+    "Regarde la durée de tes essais passés.",
+    "Liste tout ce que tu as lancé sur les douze derniers mois, avec la durée réelle de chaque essai en face. Ne juge pas les méthodes, regarde juste la colonne des durées. Le schéma devient en général impossible à ignorer. Reste la question difficile : à partir de quand un ralentissement devient un vrai signal d'arrêt, et pas juste l'étape normale que tu prends pour un verdict."
+   ]
+  ],
+  "wall": "Ces trois chantiers ne valent que tenus ensemble, et sur la durée. C'est précisément ce que ton profil n'a jamais réussi à faire seul — pas par manque de volonté, mais parce que la décision de tenir se prend chaque semaine, et qu'une bonne raison de changer se présente toujours."
+ },
+ "X": {
+  "actions": [
+   [
+    "Compte tout, pas seulement ce que tu programmes.",
+    "Sur une semaine, note toutes tes heures d'activité — second sport, déplacements actifs, journées debout — et mets ce total en face de tes heures de sommeil. Tu comptes aujourd'hui tes séances de musculation parce que ce sont celles que tu planifies. Ton système nerveux et tes articulations, eux, additionnent tout. C'est souvent à ce moment précis que l'explication devient évidente."
+   ],
+   [
+    "Allège avant d'optimiser.",
+    "Réduis un peu ta charge totale et laisse passer quelques semaines avant de juger. L'intérêt n'est pas le volume en moins : c'est ce que ton corps fait de la marge, et ce que tu ressens à l'idée de la retirer. Les deux informations comptent. Où couper, en revanche, est le vrai sujet — enlever au mauvais endroit fait perdre ce que tu as mis des années à construire."
+   ],
+   [
+    "Nomme ce que tu évites.",
+    "Si une gêne t'accompagne, écris précisément quels mouvements tu contournes, et depuis quand. Un évitement de deux ans n'est plus un contournement : c'est devenu ta programmation par défaut, avec un déséquilibre que personne n'a choisi. La question n'a jamais été de savoir si tu peux t'entraîner — c'est quelles variantes ta structure tolère aujourd'hui, à quelle amplitude, et à quelle condition."
+   ]
+  ],
+  "wall": "Alléger sans savoir où, c'est perdre du stimulus utile. Savoir où sans traiter la contrainte physique, c'est reconstruire le même déséquilibre. Et les deux dépendent de ce que ton relevé de charge révèle. Trois chantiers, un seul système."
+ },
+ "NONE": {
+  "actions": [
+   [
+    "Ne touche à rien pour l'instant.",
+    "C'est le conseil le plus contre-intuitif et le plus important de ton profil. Rien ne bouge, donc quelque chose doit être faux, donc tu changes — et tu viens de casser une structure qui fonctionnait. Ton profil perd bien plus de temps par excès de correction que par inaction. Garde ton programme et ta diète intacts pendant la phase d'observation qui suit."
+   ],
+   [
+    "Filme-toi.",
+    "Trois séries lourdes, de profil, en entier, sur tes deux mouvements principaux. Regarde-les à froid le lendemain. L'amplitude réelle et la vitesse de la dernière répétition disent des choses que la sensation ne dit pas — et l'écart entre ce qu'on croit produire et ce qu'on produit est presque toujours plus grand que prévu. Ce que tu verras demandera un regard entraîné pour être interprété."
+   ],
+   [
+    "Compte ce que reçoit chaque groupe musculaire.",
+    "Pas tes séances : les séries réellement dures, par groupe, sur une semaine. Un programme équilibré sur le papier peut sous-stimuler un groupe entier sans que rien ne le signale. Reste ensuite la question la plus délicate de ton profil : savoir quelle vitesse de progression est légitime à ton niveau. Il est possible que ton corps réponde normalement et que ce soit ton repère qui ne le soit plus."
+   ]
+  ],
+  "wall": "Ton profil est le seul où le diagnostic dit honnêtement qu'il ne suffit pas. Ce qui reste ne se lit pas dans un questionnaire : ça se regarde sur des images, dans un décompte, et dans une comparaison entre ce que tu déclares et ce que tu fais. C'est un travail d'observation à deux, pas de correction en solo."
+ }
+};
+
+/* ============================================================
+   3. LES 14 QUESTIONS
+   arch  = points d'archétype
+   zones = pénalités de zone (négatif = pénalité, positif = bonus)
+   ============================================================ */
+
+var QUESTIONS = [
+
+/* --- 1 --- */
+{
+  id:"q1", type:"rows", eyebrow:"Contexte",
+  title:"On commence par le décor.",
+  rows:[
+    { id:"anciennete", label:"Depuis combien de temps tu t'entraînes sérieusement", options:[
+      { id:"lt1",  label:"Moins d'un an" },
+      { id:"y13",  label:"1 à 3 ans" },
+      { id:"y35",  label:"3 à 5 ans",     arch:{S:1} },
+      { id:"gt5",  label:"Plus de 5 ans", arch:{S:2,K:1} }
+    ]},
+    { id:"evolution", label:"Et ces 6 derniers mois, ton corps a", options:[
+      { id:"prog", label:"Progressé doucement, mais réellement" },
+      { id:"stag", label:"Stagné — rien ne bouge",              arch:{S:2,K:1} },
+      { id:"bad",  label:"Pris la mauvaise direction",          arch:{T:2,X:2} },
+      { id:"dk",   label:"Je ne saurais pas dire",              arch:{S:3}, zones:{Z4:-10}, neutral:true }
+    ]}
+  ]
+},
+
+/* --- 2 --- */
+{
+  id:"q2", type:"single", eyebrow:"Objectif",
+  title:"Qu'est-ce que tu cherches vraiment en ce moment ?",
+  options:[
+    { id:"fat",    label:"Perdre du gras" },
+    { id:"muscle", label:"Prendre du muscle" },
+    { id:"recomp", label:"Recomposer — perdre du gras et prendre du muscle", arch:{K:2}, zones:{Z5:-8} },
+    { id:"perf",   label:"Être plus performante — plus forte, plus endurante, meilleure sur mon sport", arch:{X:1} },
+    { id:"dk",     label:"Je ne sais pas ce dont mon corps a besoin", arch:{K:4}, zones:{Z5:-22}, neutral:true }
+  ]
+},
+
+/* --- 3 --- */
+{
+  id:"q3", type:"rows", eyebrow:"Volume",
+  title:"Ta charge réelle, sur une semaine normale.",
+  rows:[
+    { id:"seances", label:"Séances de musculation par semaine, en vrai", options:[
+      { id:"s12", label:"1 à 2",       zones:{Z4:-8} },
+      { id:"s34", label:"3 à 4" },
+      { id:"s56", label:"5 à 6",       arch:{X:1} },
+      { id:"s7",  label:"7 et plus",   arch:{X:3}, zones:{Z6:-10} }
+    ]},
+    { id:"sport2", label:"Et à côté de la musculation", options:[
+      { id:"none",  label:"Rien d'autre" },
+      { id:"light", label:"Un second sport léger — 1 fois par semaine" },
+      { id:"mid",   label:"Un second sport soutenu — 2 à 3 fois par semaine", arch:{X:2}, zones:{Z6:-10} },
+      { id:"hard",  label:"Un second sport intensif, ou de la compétition — 4 fois et plus", arch:{X:4}, zones:{Z6:-18} }
+    ]}
+  ]
+},
+
+/* --- 4 --- */
+{
+  id:"q4", type:"groups", eyebrow:"Signaux",
+  title:"Ce que ton corps te signale.",
+  groups:[
+    { id:"generaux", mode:"multi",
+      label:"Est-ce que tu observes un ou plusieurs de ces signaux",
+      hint:"Plusieurs réponses possibles. Si tu n'en observes aucun, dis-le : c'est une information, pas une case vide.",
+      options:[
+        { id:"fatigue", label:"Fatigue qui traîne, même après une bonne nuit",              arch:{T:3},     zones:{Z1:-15,Z6:-8} },
+        { id:"digest",  label:"Digestion capricieuse — ballonnements, transit irrégulier",  arch:{T:2},     zones:{Z1:-12} },
+        { id:"recup",   label:"Récupération difficile — courbatures qui durent, force en baisse", arch:{T:2,X:2}, zones:{Z1:-10,Z6:-12} },
+        { id:"thyro",   label:"Frilosité, chute de cheveux, ongles cassants",               arch:{T:3},     zones:{Z1:-16} },
+        { id:"none",    label:"Aucun de ces signaux", exclusive:true, neutral:true }
+      ]},
+    { id:"cycle", mode:"single",
+      label:"Et ton cycle, aujourd'hui",
+      hint:"Une seule réponse. Le cycle se lit séparément du reste : ces signaux peuvent exister avec ou sans lui.",
+      options:[
+        { id:"regulier",     label:"Régulier, sans rien de particulier" },
+        { id:"spm",          label:"Régulier, mais avec des SPM marqués — douleurs, humeur, seins tendus", arch:{T:2}, zones:{Z1:-16} },
+        { id:"irregulier",   label:"Irrégulier — les durées varient beaucoup d'un mois à l'autre",        arch:{T:9}, zones:{Z1:-38} },
+        { id:"absent",       label:"Absent depuis plusieurs mois",                                        arch:{T:13}, zones:{Z1:-54} },
+        { id:"contraception",label:"Je suis sous contraception hormonale, je n'ai pas de cycle naturel", neutral:true },
+        { id:"nofollow",     label:"Je ne le suis pas, je ne saurais pas dire", arch:{S:2}, neutral:true }
+      ]}
+  ]
+},
+
+
+/* --- 5 --- */
+{
+  id:"q5", type:"rows", eyebrow:"Récupération",
+  title:"Ce que ton corps arrive à encaisser.",
+  rows:[
+    { id:"sommeil", label:"Tu dors combien, en moyenne", options:[
+      { id:"lt6", label:"Moins de 6 h", arch:{X:3,T:2}, zones:{Z6:-20,Z1:-10} },
+      { id:"h67", label:"6 à 7 h",      arch:{X:1},     zones:{Z6:-10} },
+      { id:"h78", label:"7 à 8 h" },
+      { id:"gt8", label:"Plus de 8 h" }
+    ]},
+    { id:"stress", label:"Ton niveau de stress au quotidien", options:[
+      { id:"low",  label:"Faible" },
+      { id:"mid",  label:"Modéré",                          zones:{Z6:-4} },
+      { id:"high", label:"Élevé",           arch:{X:2},     zones:{Z6:-12,Z1:-8} },
+      { id:"perm", label:"Permanent, je ne décroche pas", arch:{X:3,T:2}, zones:{Z6:-18,Z1:-12} }
+    ]},
+    { id:"etat", label:"Entre deux séances, tu arrives dans quel état", options:[
+      { id:"fresh", label:"Récupérée, j'ai envie d'y aller" },
+      { id:"ok",    label:"Correcte la plupart du temps",                    zones:{Z6:-4} },
+      { id:"worn",  label:"Souvent entamée, mais je m'entraîne quand même", arch:{X:3}, zones:{Z6:-16} },
+      { id:"tired", label:"Fatiguée en permanence, je force", arch:{X:5,T:2}, zones:{Z6:-24,Z1:-10} }
+    ]}
+  ]
+},
+
+/* --- 6 --- */
+{
+  id:"q6", type:"single", eyebrow:"Repas",
+  title:"À quoi ressemblent tes journées alimentaires ?",
+  hint:"Il n'y a pas de bonne réponse ici. L'irrégularité n'est un problème que croisée avec autre chose.",
+  options:[
+    { id:"fixed",   label:"Mes repas sont fixes, et je les organise autour de mes séances", zones:{Z2:6} },
+    { id:"regular", label:"Mes repas sont réguliers, sans que j'y réfléchisse vraiment" },
+    { id:"varies",  label:"Ça change beaucoup d'un jour à l'autre, selon mon planning" },
+    { id:"late",    label:"Je mange surtout quand j'ai le temps, souvent une grosse partie en fin de journée" }
+  ]
+},
+
+/* --- 7 --- */
+{
+  id:"q7", type:"single", eyebrow:"Apports",
+  title:"Tu sais ce que tu manges, en quantité ?",
+  options:[
+    { id:"all3",      label:"Je connais mes apports en protéines, glucides et lipides, et je les atteins", zones:{Z2:10} },
+    { id:"protOnly",  label:"Je surveille surtout mes protéines, le reste je ne mesure pas" },
+    { id:"noNumbers", label:"Je fais attention, mais sans chiffres",           arch:{S:2},     zones:{Z2:-20} },
+    { id:"tooLittle", label:"Je sais que je mange trop peu, ou pas assez de protéines", arch:{S:3,T:2}, zones:{Z2:-26,Z1:-8} },
+    { id:"noIdea",    label:"Aucune idée",                                     arch:{S:4},     zones:{Z2:-40}, neutral:true }
+  ]
+},
+
+/* --- 8 --- */
+{
+  id:"q8", type:"multi", eyebrow:"Alimentation",
+  title:"Ta relation à la nourriture, aujourd'hui.",
+  hint:"Plusieurs réponses possibles.",
+  options:[
+    { id:"rigid",       label:"Je suis très cadrée, et sortir du cadre me met mal à l'aise", arch:{C:4}, zones:{Z3:-22}, excludes:["rigidOk"] },
+    { id:"rigidOk",     label:"Je suis très cadrée, et ça ne me coûte rien", neutral:true, excludes:["rigid"] },
+    { id:"unexplained", label:"J'ai des écarts que je ne m'explique pas",   arch:{C:3}, zones:{Z3:-18} },
+    { id:"guilt",       label:"Je culpabilise après certains repas",        arch:{C:3}, zones:{Z3:-18} },
+    { id:"restrict",    label:"Je restreins, puis je compense — et ça recommence", arch:{C:5}, zones:{Z3:-26,Z2:-8} },
+    { id:"emotional",   label:"Je mange différemment quand je suis stressée ou fatiguée", arch:{C:2}, zones:{Z3:-10} },
+    { id:"fine",        label:"Je mange sans y penser, ça ne me pose pas de problème", exclusive:true, neutral:true }
+  ]
+},
+
+/* --- 9 --- */
+{
+  id:"q9", type:"multi", eyebrow:"Données",
+  title:"Qu'est-ce que tu suis, concrètement ?",
+  hint:"Plusieurs réponses possibles.",
+  options:[
+    { id:"loads",    label:"Mes charges — carnet, appli, notes",       zones:{Z4:10} },
+    { id:"intake",   label:"Mes apports, au moins ponctuellement",     zones:{Z2:6} },
+    { id:"weight",   label:"Mon poids, régulièrement",                 zones:{Z4:3} },
+    { id:"measures", label:"Mes mensurations ou des photos",           zones:{Z4:5} },
+    { id:"nothing",  label:"Je ne suis rien", exclusive:true, arch:{S:5}, zones:{Z4:-34,Z2:-12} }
+  ]
+},
+
+/* --- 10 --- */
+{
+  id:"q10", type:"rows", eyebrow:"Entraînement",
+  title:"Ton programme, et depuis quand.",
+  rows:[
+    { id:"origine", label:"Ton programme actuel vient d'où", options:[
+      { id:"customUp",   label:"Il est construit pour moi, et mes charges montent", zones:{Z4:20} },
+      { id:"customFlat", label:"Il est construit pour moi, mais mes charges stagnent", arch:{S:2}, zones:{Z4:-16} },
+      { id:"online",     label:"C'est un programme trouvé en ligne, ou une appli", arch:{S:3}, zones:{Z4:-26} },
+      { id:"changes",    label:"Je change souvent, je fais un peu selon l'envie du jour", arch:{K:5,S:2}, zones:{Z4:-22,Z5:-20} },
+      { id:"nothing",    label:"Je n'ai pas vraiment de programme", arch:{S:4,K:3}, zones:{Z4:-36,Z5:-14} }
+    ]},
+    { id:"duree", label:"Tu le suis depuis combien de temps", options:[
+      { id:"lt4w", label:"Moins de 4 semaines", arch:{K:4}, zones:{Z5:-20} },
+      { id:"m13",  label:"1 à 3 mois",          arch:{K:2}, zones:{Z5:-10} },
+      { id:"m36",  label:"3 à 6 mois" },
+      { id:"gt6",  label:"Plus de 6 mois",                  zones:{Z5:10} }
+    ]}
+  ]
+},
+
+/* --- 11 --- CLASSEMENT */
+{
+  id:"q11", type:"rank", eyebrow:"Historique",
+  title:"Ce que tu as déjà essayé, sans résultat qui dure.",
+  hint:"Classe jusqu'à 3 réponses, en commençant par la plus décevante. Touche une option pour la classer, touche-la à nouveau pour l'enlever.",
+  maxRank:3,
+  options:[
+    /* Poids volontairement faible : cette question sert surtout à personnaliser
+       la réponse. Avec un rang 1 à ×3, des scores élevés ici écrasaient des
+       signaux physiologiques bien plus déterminants. */
+    { id:"apps",     label:"Des applis d'entraînement ou de nutrition", arch:{S:1} },
+    { id:"pdf",      label:"Des programmes ou des PDF achetés",         arch:{S:1} },
+    { id:"diets",    label:"Des diètes trouvées en ligne",              arch:{C:1,S:0.5} },
+    { id:"coaching", label:"Un coaching qui ne regardait pas mon cas",  arch:{T:1} },
+    { id:"alone",    label:"Faire seule, avec ce que je comprenais",    arch:{S:1,K:1} }
+  ],
+  bypass:{ id:"never", label:"Je n'ai jamais rien essayé de structuré", arch:{S:1}, zones:{Z4:-8} }
+},
+
+/* --- 12 --- */
+{
+  id:"q12", type:"multi", eyebrow:"Environnement",
+  title:"Autour de toi, et dans ton corps.",
+  hint:"Plusieurs réponses possibles.",
+  options:[
+    { id:"noUnderstand", label:"Mon entourage ne comprend pas vraiment ce que je fais", arch:{X:2}, zones:{Z5:-10} },
+    { id:"remarks",      label:"J'ai des remarques régulières sur mon corps",           arch:{X:2,C:2}, zones:{Z5:-10,Z3:-8} },
+    { id:"secret",       label:"Je garde mon objectif pour moi",                        arch:{X:1}, zones:{Z5:-8} },
+    { id:"beliefs",      label:"Mon entourage m'impose ses croyances alimentaires",     arch:{C:2,S:2}, zones:{Z2:-8,Z3:-6} },
+    { id:"physical",     label:"J'ai une contrainte physique ou une pathologie — hernie, arthrose, post-opératoire, articulation instable", arch:{X:5}, zones:{Z6:-20,Z4:-10} },
+    { id:"fine",         label:"Mon entourage me soutient et je n'ai aucune contrainte physique", exclusive:true, neutral:true }
+  ]
+},
+
+/* --- 13 --- CLASSEMENT */
+{
+  id:"q13", type:"rank", eyebrow:"Attentes",
+  title:"Si quelqu'un devait regarder ton cas de près, tu attendrais quoi en priorité ?",
+  hint:"Classe jusqu'à 3 réponses, la plus importante en premier.",
+  maxRank:3,
+  options:[
+    { id:"why",      label:"Comprendre pourquoi mon corps réagit comme ça",      wa:"comprendre pourquoi mon corps réagit comme ça" },
+    { id:"frame",    label:"Avoir un cadre, et des comptes à rendre",            wa:"avoir un cadre clair et des comptes à rendre" },
+    { id:"reassure", label:"Être rassurée sur ce qui est normal et ce qui ne l'est pas", wa:"savoir ce qui est normal et ce qui ne l'est pas" },
+    { id:"adapt",    label:"Qu'on adapte à mes contraintes — physiques, horaires, vie", wa:"que ce soit vraiment adapté à mes contraintes" },
+    { id:"autonomy", label:"Être laissée autonome, avec juste les bonnes informations", wa:"comprendre assez pour décider seule ensuite" }
+  ]
+},
+
+/* --- 14 --- */
+{
+  id:"q14", type:"single", eyebrow:"Cap",
+  title:"Dans un an, à quoi tu reconnais que ça a marché ?",
+  options:[
+    { id:"precise",     label:"Je vois précisément le physique que je veux, et ce que je veux soulever", zones:{Z5:10} },
+    { id:"knowWhat",    label:"Je sais ce que je veux, mais pas comment on y arrive" },
+    { id:"stopWasting", label:"Je veux arrêter d'avoir l'impression de perdre mon temps", arch:{K:2}, zones:{Z5:-10} },
+    { id:"understand",  label:"Je veux comprendre pourquoi mon corps ne répond pas",      arch:{T:2} },
+    { id:"noIdea",      label:"Je n'en sais rien — et c'est bien ça le problème",         arch:{K:5}, zones:{Z5:-22}, neutral:true }
+  ]
+}
+
+];
+
+/* ============================================================
+   4. ÉTAT
+   answers[qid] :
+     single -> "optionId"
+     rows   -> { rowId: "optionId" }
+     multi  -> ["id1","id2"]
+     rank   -> { ranked:["id1","id2"], bypass:false }
+   ============================================================ */
+
+var state = { index:0, answers:{}, result:null };
+
+var RANK_WEIGHTS = [3, 1.3, 0.5];
+var TIE_ORDER = ["T","C","X","S","K"];
+
+/* ---------- Helpers ---------- */
+
+function findQuestion(qid){
+  for(var i=0;i<QUESTIONS.length;i++){ if(QUESTIONS[i].id===qid) return QUESTIONS[i]; }
+  return null;
+}
+function findOption(q, oid, rowId){
+  var list = null;
+  if(q.type==="rows"){
+    for(var r=0;r<q.rows.length;r++){ if(q.rows[r].id===rowId){ list=q.rows[r].options; break; } }
+  } else if(q.type==="groups"){
+    for(var g=0;g<q.groups.length;g++){ if(q.groups[g].id===rowId){ list=q.groups[g].options; break; } }
+  } else {
+    list = q.options;
+    if(q.bypass && q.bypass.id===oid) return q.bypass;
+  }
+  if(!list) return null;
+  for(var i=0;i<list.length;i++){ if(list[i].id===oid) return list[i]; }
+  return null;
+}
+function findGroup(q, gid){
+  for(var g=0;g<q.groups.length;g++){ if(q.groups[g].id===gid) return q.groups[g]; }
+  return null;
+}
+function el(id){ return document.getElementById(id); }
+
+
+function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+
+/* ============================================================
+   5. SCORING — recalculé intégralement à chaque fois.
+   Aucun ajout/retrait incrémental : le bouton retour ne peut
+   donc pas produire de double comptage.
+   ============================================================ */
+
+function applyOption(opt, scores, mult){
+  if(!opt) return;
+  var m = (typeof mult === "number") ? mult : 1;
+  var k;
+  if(opt.arch){ for(k in opt.arch){ if(Object.prototype.hasOwnProperty.call(opt.arch,k)) scores.arch[k] += opt.arch[k]*m; } }
+  if(opt.zones){ for(k in opt.zones){ if(Object.prototype.hasOwnProperty.call(opt.zones,k)) scores.zones[k] += opt.zones[k]*m; } }
+}
+
+function computeScores(){
+  var scores = {
+    arch:{ T:0, C:0, S:0, K:0, X:0 },
+    zones:{ Z1:0, Z2:0, Z3:0, Z4:0, Z5:0, Z6:0 }
+  };
+
+  var i, q, ans, r, row, j;
+
+  for(i=0;i<QUESTIONS.length;i++){
+    q = QUESTIONS[i];
+    ans = state.answers[q.id];
+    if(ans === undefined || ans === null) continue;
+
+    if(q.type==="single"){
+      applyOption(findOption(q, ans), scores, 1);
+
+    } else if(q.type==="rows"){
+      for(r=0;r<q.rows.length;r++){
+        row = q.rows[r];
+        if(ans[row.id]) applyOption(findOption(q, ans[row.id], row.id), scores, 1);
+      }
+
+    } else if(q.type==="groups"){
+      for(r=0;r<q.groups.length;r++){
+        var g = q.groups[r];
+        var ga = ans[g.id];
+        if(!ga) continue;
+        if(g.mode === "single"){
+          applyOption(findOption(q, ga, g.id), scores, 1);
+        } else {
+          for(j=0;j<ga.length;j++) applyOption(findOption(q, ga[j], g.id), scores, 1);
+        }
+      }
+
+    } else if(q.type==="multi"){
+      for(j=0;j<ans.length;j++) applyOption(findOption(q, ans[j]), scores, 1);
+
+    } else if(q.type==="rank"){
+      if(ans.bypass){
+        applyOption(q.bypass, scores, 1);
+      } else {
+        for(j=0;j<ans.ranked.length;j++){
+          applyOption(findOption(q, ans.ranked[j]), scores, RANK_WEIGHTS[j] || 0.25);
+        }
+      }
+    }
+  }
+
+  applyCrossRules(scores);
+
+  // Zones : base 100. Au-dessus de 80, l'échelle est compressée pour que
+  // plusieurs zones saines ne s'écrasent pas toutes contre le plafond.
+  var finalZones = {};
+  for(i=0;i<ZONES.length;i++){
+    var zid = ZONES[i].id;
+    var raw = 100 + scores.zones[zid];
+    var v = (raw > 80) ? (80 + (raw - 80) * 0.25) : raw;
+    finalZones[zid] = Math.round(clamp(v, 12, 90));
+  }
+  scores.finalZones = finalZones;
+  return scores;
+}
+
+/* ---------- Règles de croisement ---------- */
+
+function has(qid, oid){
+  var a = state.answers[qid];
+  if(a===undefined || a===null) return false;
+  if(typeof a === "string") return a === oid;
+  if(Array.isArray(a)) return a.indexOf(oid) !== -1;
+  // objet : questions à lignes ou à groupes
+  for(var k in a){
+    if(!Object.prototype.hasOwnProperty.call(a,k)) continue;
+    var v = a[k];
+    if(typeof v === "string" && v === oid) return true;
+    if(Array.isArray(v) && v.indexOf(oid) !== -1) return true;
+  }
+  return false;
+}
+function rowIs(qid, rowId, oid){
+  var a = state.answers[qid];
+  if(!a || typeof a !== "object" || Array.isArray(a)) return false;
+  return a[rowId] === oid;
+}
+
+function applyCrossRules(scores){
+  var A = scores.arch, Z = scores.zones;
+
+  // R1 — "Être performante" + gros volume + second sport soutenu = empilement sans consolidation
+  var bigVolume  = rowIs("q3","seances","s56") || rowIs("q3","seances","s7");
+  var bigSecond  = rowIs("q3","sport2","mid")  || rowIs("q3","sport2","hard");
+  if(has("q2","perf") && bigVolume && bigSecond){ A.X += 4; Z.Z6 -= 6; }
+
+  // R2 — Objectif performance mais vision à un an purement esthétique = deux directions
+  if(has("q2","perf") && has("q14","precise")){ A.K += 3; Z.Z5 -= 8; }
+
+  // R3 — X ne monte que si le volume est élevé ET l'état dégradé.
+  var worn = rowIs("q5","etat","worn") || rowIs("q5","etat","tired");
+  var volumeHigh = bigVolume || bigSecond;
+  if(volumeHigh && worn){ A.X += 5; Z.Z6 -= 8; }
+  if(volumeHigh && !worn){ A.X -= 3; Z.Z6 += 10; }   // beaucoup de volume en arrivant fraîche ne coûte rien
+
+  // R4 — L'irrégularité des repas ne pénalise que croisée avec des apports bas
+  var loosemeals = has("q6","varies") || has("q6","late");
+  var lowIntake  = has("q7","noNumbers") || has("q7","tooLittle") || has("q7","noIdea");
+  if(loosemeals && lowIntake){ Z.Z2 -= 12; }
+
+  // R5 — ... et n'alimente le rapport à la nourriture que s'il y a déjà un signal
+  var q8 = state.answers["q8"];
+  var foodSignal = Array.isArray(q8) && (q8.indexOf("rigid")!==-1 || q8.indexOf("unexplained")!==-1 ||
+                    q8.indexOf("guilt")!==-1 || q8.indexOf("restrict")!==-1 || q8.indexOf("emotional")!==-1);
+  if(loosemeals && foodSignal){ A.C += 2; Z.Z3 -= 8; }
+
+  // R6 — Incohérence déclarative : "je connais mes 3 macros" + "je ne suis rien" -> l'écran 9 l'emporte
+  if(has("q7","all3") && has("q9","nothing")){ Z.Z2 -= 10; A.S += 2; }
+
+  // R7 — Programme sur mesure + charges qui montent + tenu > 6 mois = structure validée
+  if(rowIs("q10","origine","customUp") && rowIs("q10","duree","gt6")){
+    A.S = Math.max(0, A.S - 4);
+    A.K = Math.max(0, A.K - 3);
+    Z.Z4 += 10; Z.Z5 += 5;
+  }
+
+  // R8 — Programme sur mesure mais charges plates depuis longtemps = signature "effort sans structure"
+  if(rowIs("q10","origine","customFlat") && (rowIs("q10","duree","m36") || rowIs("q10","duree","gt6"))){
+    A.S += 3; Z.Z4 -= 8;
+  }
+
+  // R9 — Contrainte physique + gros volume : la sélection prime sur le volume
+  if(has("q12","physical") && volumeHigh){ A.X += 3; Z.Z6 -= 6; }
+
+  // Aucun archétype ne descend sous zéro
+  var k; for(k in A){ if(Object.prototype.hasOwnProperty.call(A,k) && A[k] < 0) A[k] = 0; }
+}
+
+/* Certains signaux interdisent l'état « Rien n'est cassé », quels que soient
+   les scores. Un cycle irrégulier ou absent n'est jamais un terrain sain :
+   dire à cette femme que tout va bien serait la pire réponse possible. */
+function hasBlockingSignal(){
+  if(has("q4","irregulier") || has("q4","absent")) return true;
+  var a = state.answers["q4"];
+  var gen = (a && a.generaux) ? a.generaux : [];
+  var real = [];
+  for(var i=0;i<gen.length;i++){ if(gen[i] !== "none") real.push(gen[i]); }
+  if(real.length >= 3) return true;
+  if(has("q12","physical")) return true;
+  return false;
+}
+
+/* Encarts affichés en plus du profil. Ils nomment un signal sans jamais
+   nommer une pathologie : « à explorer », jamais « tu as probablement ». */
+var ALERTS = [
+  { id:"cycle",
+    test:function(){ return has("q4","irregulier") || has("q4","absent"); },
+    title:function(){
+      return has("q4","absent")
+        ? "Ton cycle est absent depuis plusieurs mois. Ce n'est pas un détail."
+        : "Ton cycle est irrégulier. Ce n'est pas un détail.";
+    },
+    body:[
+      "Ce n'est pas une conséquence normale du sport — c'est fréquent chez les sportives, ce qui n'est pas la même chose. Plusieurs explications très différentes sont possibles, et elles n'appellent pas du tout la même réponse. C'est le premier point à regarder, avant toute optimisation."
+    ],
+    legal:"Un signal à explorer, jamais une conclusion." },
+
+  { id:"cumul",
+    test:function(){
+      var a = state.answers["q4"], gen = (a && a.generaux) ? a.generaux : [], n = 0;
+      for(var i=0;i<gen.length;i++){ if(gen[i] !== "none") n++; }
+      return n >= 3;
+    },
+    title:function(){ return "Trois signaux en même temps, ça ne se lit pas séparément."; },
+    body:[
+      "Pris un par un, chacun a dix explications banales. Ensemble, ils dessinent autre chose. Les traiter séparément est la façon la plus sûre de passer à côté."
+    ],
+    legal:"Des signaux à explorer, pas des pathologies." },
+
+  { id:"physique",
+    test:function(){ return has("q12","physical"); },
+    title:function(){ return "Ta contrainte physique change l'ordre des priorités."; },
+    body:[
+      "Tant qu'elle est là, la question n'est plus combien tu t'entraînes mais comment. Et un contournement installé depuis longtemps n'est plus un contournement : c'est devenu ta programmation par défaut."
+    ],
+    legal:"" }
+];
+
+function renderAlerts(){
+  var host = el("alerts-host"), block = el("alerts-block");
+  host.innerHTML = "";
+  var shown = 0;
+  for(var i=0; i<ALERTS.length && shown < 2; i++){
+    var A = ALERTS[i];
+    if(!A.test()) continue;
+    shown++;
+    var box = document.createElement("div"); box.className = "alert";
+    var eb = document.createElement("span"); eb.className = "eyebrow";
+    eb.textContent = "À ne pas laisser de côté";
+    box.appendChild(eb);
+    var h = document.createElement("h3"); h.textContent = A.title(); box.appendChild(h);
+    for(var b=0;b<A.body.length;b++){
+      var pp = document.createElement("p"); pp.textContent = A.body[b]; box.appendChild(pp);
+    }
+    if(A.legal){
+      var lg = document.createElement("p"); lg.className = "alert-legal"; lg.textContent = A.legal;
+      box.appendChild(lg);
+    }
+    host.appendChild(box);
+  }
+  block.style.display = shown ? "" : "none";
+}
+
+function pickArchetype(scores){
+  var zvals = [], i;
+  for(i=0;i<ZONES.length;i++) zvals.push(scores.finalZones[ZONES[i].id]);
+  var minZone = Math.min.apply(null, zvals);
+
+  // État de sortie : aucune zone ne descend sous 50, et aucun signal bloquant
+  if(minZone >= 50 && !hasBlockingSignal()) return "NONE";
+
+  var best = null, bestVal = -1;
+  for(i=0;i<TIE_ORDER.length;i++){
+    var k = TIE_ORDER[i];
+    if(scores.arch[k] > bestVal){ bestVal = scores.arch[k]; best = k; }
+  }
+  if(bestVal <= 0) return hasBlockingSignal() ? "T" : "NONE";
+  return best;
+}
+
+/* ============================================================
+   6. RENDU DES QUESTIONS
+   ============================================================ */
+
+function makeOptionButton(q, opt, rowId, shape){
+  var b = document.createElement("button");
+  b.type = "button";
+  b.className = "opt" + (opt.neutral ? " is-neutral" : "");
+  b.setAttribute("data-qid", q.id);
+  b.setAttribute("data-oid", opt.id);
+  if(rowId) b.setAttribute("data-row", rowId);
+  b.setAttribute("data-shape", shape || "round");
+
+  var mark = document.createElement("span");
+  mark.className = "mark";
+  mark.appendChild(document.createElement("span"));
+
+  var badge = document.createElement("span");
+  badge.className = "rank-badge";
+
+  var txt = document.createElement("span");
+  txt.className = "opt-label";
+  txt.textContent = opt.label;
+
+  b.appendChild(mark);
+  b.appendChild(badge);
+  b.appendChild(txt);
+  return b;
+}
+
+function renderQuestion(){
+  var q = QUESTIONS[state.index];
+  var host = el("question-host");
+  host.innerHTML = "";
+
+  var head = document.createElement("div");
+  head.className = "q-head";
+  var line = document.createElement("div"); line.className = "accent-line"; head.appendChild(line);
+  var eb = document.createElement("p"); eb.className = "eyebrow"; eb.style.marginTop = "13px"; eb.textContent = q.eyebrow; head.appendChild(eb);
+  var h2 = document.createElement("h2"); h2.textContent = q.title; head.appendChild(h2);
+  if(q.hint){ var hint = document.createElement("p"); hint.className="q-hint"; hint.textContent = q.hint; head.appendChild(hint); }
+  host.appendChild(head);
+
+  var i, opt, btn, wrap;
+
+  if(q.type==="rows"){
+    for(var r=0;r<q.rows.length;r++){
+      var row = q.rows[r];
+      var lab = document.createElement("p"); lab.className="row-label"; lab.textContent = row.label;
+      host.appendChild(lab);
+      wrap = document.createElement("div"); wrap.className="options";
+      for(i=0;i<row.options.length;i++){
+        opt = row.options[i];
+        btn = makeOptionButton(q, opt, row.id, "round");
+        btn.addEventListener("click", onOptionClick);
+        wrap.appendChild(btn);
+      }
+      host.appendChild(wrap);
+    }
+
+  } else if(q.type==="groups"){
+    for(var gi=0; gi<q.groups.length; gi++){
+      var grp = q.groups[gi];
+      var glab = document.createElement("p"); glab.className="row-label"; glab.textContent = grp.label;
+      host.appendChild(glab);
+      if(grp.hint){
+        var gh = document.createElement("p"); gh.className="group-hint"; gh.textContent = grp.hint;
+        host.appendChild(gh);
+      }
+      wrap = document.createElement("div"); wrap.className="options";
+      for(i=0;i<grp.options.length;i++){
+        opt = grp.options[i];
+        btn = makeOptionButton(q, opt, grp.id, grp.mode === "multi" ? "square" : "round");
+        btn.addEventListener("click", onOptionClick);
+        wrap.appendChild(btn);
+      }
+      host.appendChild(wrap);
+    }
+
+  } else {
+    wrap = document.createElement("div"); wrap.className="options";
+    var shape = (q.type==="multi") ? "square" : "round";
+    for(i=0;i<q.options.length;i++){
+      opt = q.options[i];
+      btn = makeOptionButton(q, opt, null, q.type==="rank" ? "round" : shape);
+      btn.addEventListener("click", onOptionClick);
+      wrap.appendChild(btn);
+    }
+    if(q.bypass){
+      var sep = document.createElement("div"); sep.className="opt-sep"; wrap.appendChild(sep);
+      btn = makeOptionButton(q, { id:q.bypass.id, label:q.bypass.label, neutral:true }, null, "round");
+      btn.setAttribute("data-bypass","1");
+      btn.addEventListener("click", onOptionClick);
+      wrap.appendChild(btn);
+    }
+    host.appendChild(wrap);
+  }
+
+  paintSelection();
+  updateNav();
+  updateProgress();
+}
+
+/* ---------- Sélection ---------- */
+
+function onOptionClick(ev){
+  var b = ev.currentTarget;
+  var qid = b.getAttribute("data-qid");
+  var oid = b.getAttribute("data-oid");
+  var rowId = b.getAttribute("data-row");
+  var q = findQuestion(qid);
+  if(!q) return;
+
+  if(q.type==="single"){
+    state.answers[qid] = oid;
+    paintSelection(); updateNav();
+    return;
+  }
+
+  if(q.type==="rows"){
+    if(!state.answers[qid] || typeof state.answers[qid] !== "object") state.answers[qid] = {};
+    state.answers[qid][rowId] = oid;
+    paintSelection(); updateNav();
+    return;
+  }
+
+  if(q.type==="groups"){
+    var grp = findGroup(q, rowId);
+    if(!state.answers[qid] || typeof state.answers[qid] !== "object") state.answers[qid] = {};
+    if(grp.mode === "single"){
+      state.answers[qid][grp.id] = oid;
+    } else {
+      var gcur = Array.isArray(state.answers[qid][grp.id]) ? state.answers[qid][grp.id].slice() : [];
+      var gopt = findOption(q, oid, grp.id);
+      var gpos = gcur.indexOf(oid);
+      if(gpos !== -1){
+        gcur.splice(gpos,1);
+      } else if(gopt.exclusive){
+        gcur = [oid];
+      } else {
+        gcur = gcur.filter(function(id){ var o = findOption(q, id, grp.id); return !(o && o.exclusive); });
+        gcur.push(oid);
+      }
+      state.answers[qid][grp.id] = gcur;
+    }
+    paintSelection(); updateNav();
+    return;
+  }
+
+  if(q.type==="multi"){
+    var cur = Array.isArray(state.answers[qid]) ? state.answers[qid].slice() : [];
+    var opt = findOption(q, oid);
+    var pos = cur.indexOf(oid);
+
+    if(pos !== -1){
+      cur.splice(pos,1);
+    } else {
+      if(opt.exclusive){
+        cur = [oid];
+      } else {
+        // retirer les options exclusives déjà cochées
+        cur = cur.filter(function(id){
+          var o = findOption(q, id);
+          return !(o && o.exclusive);
+        });
+        // exclusions mutuelles déclarées
+        if(opt.excludes){
+          cur = cur.filter(function(id){ return opt.excludes.indexOf(id) === -1; });
+        }
+        cur = cur.filter(function(id){
+          var o = findOption(q, id);
+          return !(o && o.excludes && o.excludes.indexOf(oid) !== -1);
+        });
+        cur.push(oid);
+      }
+    }
+    state.answers[qid] = cur;
+    paintSelection(); updateNav();
+    return;
+  }
+
+  if(q.type==="rank"){
+    var a = state.answers[qid];
+    if(!a || typeof a !== "object") a = { ranked:[], bypass:false };
+    else a = { ranked:a.ranked ? a.ranked.slice() : [], bypass:!!a.bypass };
+
+    if(b.getAttribute("data-bypass")==="1"){
+      a = a.bypass ? { ranked:[], bypass:false } : { ranked:[], bypass:true };
+      state.answers[qid] = a;
+      paintSelection(); updateNav();
+      return;
+    }
+
+    a.bypass = false;
+    var rp = a.ranked.indexOf(oid);
+    if(rp !== -1) a.ranked.splice(rp,1);
+    else if(a.ranked.length < q.maxRank) a.ranked.push(oid);
+
+    state.answers[qid] = a;
+    paintSelection(); updateNav();
+    return;
+  }
+}
+
+function paintSelection(){
+  var q = QUESTIONS[state.index];
+  var ans = state.answers[q.id];
+  var nodes = el("question-host").querySelectorAll(".opt");
+  var n, oid, rowId, i;
+
+  for(i=0;i<nodes.length;i++){
+    n = nodes[i];
+    oid = n.getAttribute("data-oid");
+    rowId = n.getAttribute("data-row");
+    n.classList.remove("is-selected","is-ranked");
+    var badge = n.querySelector(".rank-badge");
+    if(badge) badge.textContent = "";
+
+    if(ans === undefined || ans === null) continue;
+
+    if(q.type==="single"){
+      if(ans === oid) n.classList.add("is-selected");
+    } else if(q.type==="rows"){
+      if(ans[rowId] === oid) n.classList.add("is-selected");
+    } else if(q.type==="groups"){
+      var gv = ans[rowId];
+      if(typeof gv === "string" && gv === oid) n.classList.add("is-selected");
+      else if(Array.isArray(gv) && gv.indexOf(oid) !== -1) n.classList.add("is-selected");
+    } else if(q.type==="multi"){
+      if(Array.isArray(ans) && ans.indexOf(oid) !== -1) n.classList.add("is-selected");
+    } else if(q.type==="rank"){
+      if(n.getAttribute("data-bypass")==="1"){
+        if(ans.bypass) n.classList.add("is-selected");
+      } else if(ans.ranked){
+        var pos = ans.ranked.indexOf(oid);
+        if(pos !== -1){ n.classList.add("is-ranked"); if(badge) badge.textContent = String(pos+1); }
+      }
+    }
+  }
+}
+
+function rowsComplete(q){
+  var a = state.answers[q.id];
+  if(!a) return false;
+  for(var r=0;r<q.rows.length;r++){ if(!a[q.rows[r].id]) return false; }
+  return true;
+}
+
+function isAnswered(){
+  var q = QUESTIONS[state.index];
+  var a = state.answers[q.id];
+  if(a === undefined || a === null) return false;
+  if(q.type==="single") return typeof a === "string";
+  if(q.type==="rows")   return rowsComplete(q);
+  if(q.type==="groups"){
+    for(var g=0; g<q.groups.length; g++){
+      var gv = a[q.groups[g].id];
+      if(q.groups[g].mode === "single"){ if(typeof gv !== "string") return false; }
+      else { if(!Array.isArray(gv) || gv.length === 0) return false; }
+    }
+    return true;
+  }
+  if(q.type==="multi")  return Array.isArray(a) && a.length > 0;
+  if(q.type==="rank")   return !!(a.bypass || (a.ranked && a.ranked.length > 0));
+  return false;
+}
+
+function updateNav(){
+  var next = el("next-btn");
+  var back = el("back-btn");
+  next.disabled = !isAnswered();
+  next.textContent = (state.index === QUESTIONS.length - 1) ? "Voir mon résultat" : "Continuer";
+  back.style.display = (state.index === 0) ? "none" : "";
+}
+
+function updateProgress(){
+  var n = state.index + 1;
+  if(n > progress.maxQuestion) progress.maxQuestion = n;
+  var pct = Math.round((n / QUESTIONS.length) * 100);
+  el("progress-label").textContent = "Question " + n + " / " + QUESTIONS.length;
+  el("progress-pct").textContent = pct + " %";
+  el("progress-fill").style.width = pct + "%";
+}
+
+/* ---------- Navigation ---------- */
+
+function goNext(){
+  if(!isAnswered()) return;
+  if(state.index < QUESTIONS.length - 1){
+    state.index++;
+    renderQuestion();
+    window.scrollTo({ top:0, behavior:"smooth" });
+  } else {
+    showScreen("contact");
+    window.scrollTo({ top:0, behavior:"auto" });
+  }
+}
+
+function goBack(){
+  clearAnalysis();
+  if(state.index === 0) return;
+  state.index--;
+  renderQuestion();   // les réponses sont conservées, le score est recalculé de zéro à la fin
+  window.scrollTo({ top:0, behavior:"smooth" });
+}
+
+function showScreen(id){
+  var screens = document.querySelectorAll(".screen");
+  for(var i=0;i<screens.length;i++) screens[i].classList.remove("is-active");
+  el(id).classList.add("is-active");
+}
+
+/* ============================================================
+   7. RÉSULTATS
+   ============================================================ */
+
+var ANALYSIS_STEPS = [
+  "Lecture de tes signaux physiologiques",
+  "Croisement de ta charge et de ta récupération",
+  "Analyse de ta structure d'entraînement",
+  "Vérification de tes apports et de leur régularité",
+  "Recoupement de tes réponses entre elles",
+  "Identification du mécanisme"
+];
+var STEP_DELAY = 400;
+var analysisTimers = [];
+
+function clearAnalysis(){
+  for(var i=0;i<analysisTimers.length;i++) window.clearTimeout(analysisTimers[i]);
+  analysisTimers = [];
+}
+
+function runAnalysis(){
+  clearAnalysis();
+  var host = el("an-steps");
+  host.innerHTML = "";
+  var i;
+  for(i=0;i<ANALYSIS_STEPS.length;i++){
+    var li = document.createElement("li");
+    var tick = document.createElement("span"); tick.className = "tick";
+    var txt = document.createElement("span"); txt.textContent = ANALYSIS_STEPS[i];
+    li.appendChild(tick); li.appendChild(txt);
+    host.appendChild(li);
+  }
+  showScreen("analysis");
+  window.scrollTo({ top:0, behavior:"auto" });
+
+  var nodes = host.querySelectorAll("li");
+  for(i=0;i<nodes.length;i++){
+    (function(node, idx){
+      analysisTimers.push(window.setTimeout(function(){
+        node.classList.add("is-on");
+      }, 220 + idx * STEP_DELAY));
+    })(nodes[i], i);
+  }
+  analysisTimers.push(window.setTimeout(showResults, 260 + ANALYSIS_STEPS.length * STEP_DELAY));
+}
+
+function showResults(){
+  var scores = computeScores();
+  var key = pickArchetype(scores);
+  var arch = ARCHETYPES[key];
+  state.result = { key:key, arch:arch, scores:scores };
+
+  el("res-name").textContent = arch.name;
+  el("res-tagline").textContent = arch.tagline;
+
+  // Description
+  var descHost = el("res-desc");
+  descHost.innerHTML = "";
+  for(var d=0; d<arch.desc.length; d++){
+    var p = document.createElement("p");
+    p.style.fontSize = "15.5px";
+    p.style.lineHeight = "1.75";
+    p.style.marginBottom = (d < arch.desc.length-1) ? "16px" : "0";
+    p.textContent = arch.desc[d];
+    descHost.appendChild(p);
+  }
+  el("res-desc-intro").textContent = "Ton profil en détail — pas un type de personnalité, un mécanisme.";
+
+  el("res-force").textContent  = arch.force;
+  el("res-levier").textContent = arch.levier;
+  el("res-angle").textContent  = arch.angle;
+
+  if(arch.note){
+    el("res-note").style.display = "block";
+    el("res-note-text").textContent = arch.note;
+  } else {
+    el("res-note").style.display = "none";
+  }
+
+  // Actions
+  var plan = PLANS[key] || PLANS.NONE;
+  var planHost = el("plan-host");
+  planHost.innerHTML = "";
+  for(var ci=0; ci<plan.actions.length; ci++){
+    var row = document.createElement("div");
+    row.className = "chantier";
+    var num = document.createElement("span");
+    num.className = "num"; num.textContent = String(ci + 1);
+    var body = document.createElement("div");
+    var h3 = document.createElement("h3"); h3.textContent = plan.actions[ci][0];
+    var para = document.createElement("p"); para.textContent = plan.actions[ci][1];
+    body.appendChild(h3); body.appendChild(para);
+    row.appendChild(num); row.appendChild(body);
+    planHost.appendChild(row);
+  }
+  var wall = el("plan-wall");
+  wall.innerHTML = "";
+  var wp = document.createElement("p"); wp.textContent = plan.wall;
+  wall.appendChild(wp);
+
+  // Zones
+  var zHost = el("zones-host");
+  zHost.innerHTML = "";
+  var total = 0, z, val;
+
+  // La zone la plus basse est le sujet de la page : elle domine, les zones saines s'effacent.
+  var lowestId = null, lowestVal = 999;
+  for(z=0; z<ZONES.length; z++){
+    val = scores.finalZones[ZONES[z].id];
+    if(val < lowestVal){ lowestVal = val; lowestId = ZONES[z].id; }
+  }
+
+  for(z=0; z<ZONES.length; z++){
+    var zone = ZONES[z];
+    val = scores.finalZones[zone.id];
+    total += val;
+
+    var isFocus = (zone.id === lowestId);
+    var block = document.createElement("div");
+    block.className = "zone" + (isFocus ? " is-focus" : (val >= 70 ? " is-muted" : ""));
+
+    if(isFocus){
+      var flag = document.createElement("span");
+      flag.className = "zone-flag";
+      flag.textContent = "Ton point de blocage";
+      block.appendChild(flag);
+    }
+
+    var zh = document.createElement("div"); zh.className = "zone-head";
+    var zn = document.createElement("span"); zn.className = "zone-name"; zn.textContent = zone.name;
+    var zv = document.createElement("span");
+    zv.className = "zone-val" + (val < 40 ? " is-low" : "");
+    zv.setAttribute("data-target", String(val));
+    zv.textContent = "0 %";
+    zh.appendChild(zn); zh.appendChild(zv);
+
+    var track = document.createElement("div"); track.className = "zone-track";
+    var bar = document.createElement("div");
+    bar.className = "zone-bar" + (val < 40 ? " is-low" : "");
+    bar.setAttribute("data-target", String(val));
+    track.appendChild(bar);
+
+    var note = document.createElement("p"); note.className = "zone-note"; note.textContent = zone.note;
+    block.appendChild(zh); block.appendChild(track); block.appendChild(note);
+    zHost.appendChild(block);
+  }
+
+  var potentiel = Math.round(total / ZONES.length);
+  var blocage = 100 - potentiel;
+  el("donut-pct").setAttribute("data-target", String(potentiel));
+  el("donut-pct").textContent = "0 %";
+  el("legend-pot").setAttribute("data-target", String(potentiel));
+  el("legend-pot").textContent = "0 %";
+  el("legend-blk").setAttribute("data-target", String(blocage));
+  el("legend-blk").textContent = "0 %";
+
+  buildWhatsApp(arch);
+  setupCallBlock();
+
+  renderAlerts();
+
+  progress.result = true;
+  pushToSheet({ evenement: "resultat_affiche" });
+
+  showScreen("results");
+  window.scrollTo({ top:0, behavior:"auto" });
+
+  window.setTimeout(function(){ animateResults(potentiel); }, 120);
+}
+
+/* Un chiffre qui monte se lit comme un calcul. Un chiffre figé se lit comme une étiquette. */
+function countUp(node, duration){
+  var target = parseInt(node.getAttribute("data-target"), 10);
+  if(isNaN(target)) return;
+  if(!window.requestAnimationFrame){ node.textContent = target + " %"; return; }
+  var start = null;
+  function step(ts){
+    if(start === null) start = ts;
+    var prog = Math.min(1, (ts - start) / duration);
+    var eased = 1 - Math.pow(1 - prog, 3);
+    node.textContent = Math.round(target * eased) + " %";
+    if(prog < 1) window.requestAnimationFrame(step);
+  }
+  window.requestAnimationFrame(step);
+}
+
+function fillBlock(node){
+  node.classList.add("is-in");
+  var bars = node.querySelectorAll(".zone-bar");
+  var b;
+  for(b=0;b<bars.length;b++) bars[b].style.width = bars[b].getAttribute("data-target") + "%";
+  var nums = node.querySelectorAll("[data-target]");
+  for(b=0;b<nums.length;b++){
+    if(!nums[b].classList.contains("zone-bar")) countUp(nums[b], 1150);
+  }
+}
+
+function animateResults(potentiel){
+  var circumference = 326.7;
+  el("donut-bar").style.strokeDashoffset = String(circumference * (1 - (potentiel/100)));
+
+  var blocks = document.querySelectorAll(".reveal");
+  var i;
+
+  if("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entries){
+      for(var e=0;e<entries.length;e++){
+        if(entries[e].isIntersecting){
+          fillBlock(entries[e].target);
+          obs.unobserve(entries[e].target);
+        }
+      }
+    }, { threshold:0.14, rootMargin:"0px 0px -40px 0px" });
+    for(i=0;i<blocks.length;i++) obs.observe(blocks[i]);
+  } else {
+    for(i=0;i<blocks.length;i++) fillBlock(blocks[i]);
+  }
+}
+
+/* ---------- WhatsApp ---------- */
+
+function getExpectation(){
+  var a = state.answers["q13"];
+  if(!a || !a.ranked || !a.ranked.length) return null;
+  var q = findQuestion("q13");
+  var opt = findOption(q, a.ranked[0]);
+  return opt ? opt.wa : null;
+}
+
+function readField(id){
+  var n = el(id);
+  return n && n.value ? n.value.trim() : "";
+}
+
+function normInsta(v){
+  if(!v) return "";
+  v = v.replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/+$/, "");
+  return v.charAt(0) === "@" ? v : "@" + v;
+}
+
+/* Le message est écrit de son point de vue : c'est elle qui pose la question.
+   Retourne des segments pour que l'aperçu puisse surligner ce qu'elle a saisi. */
+function messageParts(arch){
+  var prenom = readField("wa-prenom");
+  var insta  = normInsta(readField("wa-insta"));
+  var parts  = [{ t:"Salut Kevin, " }];
+
+  if(prenom && insta){
+    parts.push({ t:"c'est " });
+    parts.push({ t:prenom, fill:true });
+    parts.push({ t:" (" });
+    parts.push({ t:insta, fill:true });
+    parts.push({ t:"). " });
+  } else if(prenom){
+    parts.push({ t:"c'est " });
+    parts.push({ t:prenom, fill:true });
+    parts.push({ t:". " });
+  } else if(insta){
+    parts.push({ t:"c'est " });
+    parts.push({ t:insta, fill:true });
+    parts.push({ t:" sur Instagram. " });
+  }
+
+  // Sans prénom ni compte, la phrase enchaîne directement après la virgule.
+  parts.push({ t:(prenom || insta ? "Je" : "je") + " viens de faire ton diagnostic, je tombe sur le profil " });
+  parts.push({ t:arch.name, fill:true });
+  parts.push({ t:". J'aimerais bien avoir ton avis sur mon cas — tu as deux minutes ?" });
+  return parts;
+}
+
+function buildWhatsAppMessage(arch){
+  var parts = messageParts(arch), out = "";
+  for(var i=0;i<parts.length;i++) out += parts[i].t;
+  return out;
+}
+
+function renderPreview(arch){
+  var host = el("wa-preview");
+  if(!host) return;
+  host.innerHTML = "";
+  var parts = messageParts(arch);
+  for(var i=0;i<parts.length;i++){
+    var sp = document.createElement("span");
+    if(parts[i].fill) sp.className = "fill";
+    sp.textContent = parts[i].t;
+    host.appendChild(sp);
+  }
+}
+
+function waHref(arch){
+  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(buildWhatsAppMessage(arch));
+}
+
+function buildWhatsApp(arch){
+  var btn = el("wa-btn");
+  var refresh = function(){
+    btn.setAttribute("href", waHref(arch));
+    renderPreview(arch);
+  };
+  refresh();
+
+  // L'aperçu et le lien se recomposent à chaque frappe.
+  var p1 = el("wa-prenom"), p2 = el("wa-insta");
+  if(p1) p1.addEventListener("input", refresh);
+  if(p2) p2.addEventListener("input", refresh);
+
+  btn.addEventListener("click", function(){
+    refresh();
+    progress.waClick = true;
+    pushToSheet({
+      evenement: "clic_whatsapp",
+      prenom: readField("wa-prenom"),
+      instagram: readField("wa-insta")
+    });
+  });
+}
+
+/* ---------- Bloc appel ---------- */
+
+function setupCallBlock(){
+  var block = el("call-block");
+  if(SHOW_CALL_CTA){
+    block.style.display = "block";
+    el("call-btn").setAttribute("href", CALL_LINK);
+  } else {
+    block.style.display = "none";
+  }
+}
+
+/* ---------- Envoi vers Google Sheets ---------- */
+
+/* Libellé lisible d'une réponse, pour que la ligne du Sheet se lise sans décodeur. */
+function answerLabel(q, ans){
+  var i, out;
+  if(q.type === "single"){
+    var o = findOption(q, ans);
+    return o ? o.label : "";
+  }
+  if(q.type === "rows"){
+    out = [];
+    for(i=0;i<q.rows.length;i++){
+      var r = q.rows[i];
+      var ro = ans[r.id] ? findOption(q, ans[r.id], r.id) : null;
+      if(ro) out.push(ro.label);
+    }
+    return out.join(" | ");
+  }
+  if(q.type === "groups"){
+    out = [];
+    for(i=0;i<q.groups.length;i++){
+      var g = q.groups[i], gv = ans[g.id], part = [];
+      if(g.mode === "single"){
+        var so = gv ? findOption(q, gv, g.id) : null;
+        if(so) part.push(so.label);
+      } else if(Array.isArray(gv)){
+        for(var j2=0;j2<gv.length;j2++){
+          var go = findOption(q, gv[j2], g.id);
+          if(go) part.push(go.label);
+        }
+      }
+      if(part.length) out.push(g.label + " : " + part.join(", "));
+    }
+    return out.join(" || ");
+  }
+  if(q.type === "multi"){
+    out = [];
+    for(i=0;i<ans.length;i++){
+      var mo = findOption(q, ans[i]);
+      if(mo) out.push(mo.label);
+    }
+    return out.join(" | ");
+  }
+  if(q.type === "rank"){
+    if(ans.bypass) return q.bypass.label;
+    out = [];
+    for(i=0;i<ans.ranked.length;i++){
+      var ko = findOption(q, ans.ranked[i]);
+      if(ko) out.push((i+1) + ". " + ko.label);
+    }
+    return out.join(" | ");
+  }
+  return "";
+}
+
+function buildPayload(extra){
+  var res = state.result;
+  var fd = new FormData();
+  fd.append("visite_id", VISITE.visite_id);
+  fd.append("id_contact", VISITE.id_contact);
+  fd.append("source_lien", VISITE.source);
+  fd.append("source", "diagnostic-recode");
+  fd.append("contact_prenom",  CONTACT.prenom);
+  fd.append("contact_instagram", CONTACT.instagram);
+  fd.append("contact_whatsapp", CONTACT.tel);
+  fd.append("profil", res ? res.arch.name : "");
+  fd.append("profil_cle", res ? res.key : "");
+  fd.append("attente", getExpectation() || "");
+
+  if(res){
+    var z = res.scores.finalZones, total = 0, i;
+    for(i=0;i<ZONES.length;i++){
+      fd.append("zone_" + ZONES[i].id, String(z[ZONES[i].id]));
+      total += z[ZONES[i].id];
+    }
+    fd.append("potentiel", String(Math.round(total / ZONES.length)));
+    fd.append("scores_archetypes", JSON.stringify(res.scores.arch));
+  }
+
+  for(var q=0; q<QUESTIONS.length; q++){
+    var qq = QUESTIONS[q];
+    var a = state.answers[qq.id];
+    fd.append(qq.id + "_" + qq.eyebrow.toLowerCase(),
+              (a === undefined || a === null) ? "" : answerLabel(qq, a));
+  }
+
+  if(extra){ for(var k in extra){ if(Object.prototype.hasOwnProperty.call(extra,k)) fd.append(k, extra[k]); } }
+  return fd;
+}
+
+/* ------------------------------------------------------------------
+   Contexte de la visite
+   ------------------------------------------------------------------
+   visite_id : identifiant aléatoire, le même sur toutes les lignes d'une
+   même visite. Sans lui, impossible de relier « resultat_affiche » et
+   « clic_whatsapp » de la même personne dans la feuille.
+
+   id / src : lus dans l'adresse. Un lien envoyé en DM peut porter
+   l'identifiant du contact (?id=...), ce qui permet de savoir qui ouvre
+   la page avant qu'elle n'ait rien saisi. Depuis la bio Instagram, le
+   lien est le même pour tout le monde : ces champs restent vides.
+   ------------------------------------------------------------------ */
+var VISITE = (function(){
+  var v = { visite_id:"", id_contact:"", source:"" };
+  var i, r = "";
+  var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  for(i=0;i<10;i++) r += chars.charAt(Math.floor(Math.random()*chars.length));
+  v.visite_id = r;
+
+  var q = window.location.search.replace(/^\?/, "").split("&");
+  var params = {};
+  for(i=0;i<q.length;i++){
+    if(!q[i]) continue;
+    var kv = q[i].split("=");
+    try { params[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1]||"").replace(/\+/g," ")); }
+    catch(e){ params[kv[0]] = kv[1] || ""; }
+  }
+  v.id_contact = params.id || params.contact || params.cid || "";
+  v.source     = params.src || params.utm_source || params.utm_campaign || params.utm_content || "";
+  return v;
+})();
+
+/* ------------------------------------------------------------------
+   Coordonnées saisies avant la question 1. Le numéro est normalisé au
+   format international sans "+" (33612345678), directement utilisable
+   dans un lien wa.me. Indicatifs gérés : FR, BE, CH, CA/US, LU, et
+   "Autre" où elle tape son numéro complet avec son indicatif.
+   ------------------------------------------------------------------ */
+var CONTACT = { prenom:"", instagram:"", tel:"" };
+
+function normPhone(){
+  var cc  = el("id-indicatif").value;
+  var raw = readField("id-tel").replace(/[^0-9+]/g, "");
+  raw = raw.replace(/\+/g, "");
+  raw = raw.replace(/^00/, "");
+  if(cc === ""){                      // "Autre" : numéro complet attendu
+    return raw.replace(/^0+/, "");
+  }
+  if(raw.indexOf(cc) === 0 && raw.length > cc.length + 6) raw = raw.slice(cc.length);
+  raw = raw.replace(/^0+/, "");
+  return cc + raw;
+}
+
+function validateIdentite(){
+  if(readField("id-prenom").length < 2) return "Il me faut ton prénom.";
+  if(normInsta(readField("id-insta")).length < 3) return "Il me faut ton compte Instagram.";
+  var tel = normPhone();
+  if(tel.length < 8 || tel.length > 15) return "Ce numéro ne semble pas complet. Vérifie-le.";
+  return "";
+}
+
+/* Où elle en est. Sert à savoir ce qui est arrivé si elle quitte la page. */
+var progress = { started:false, maxQuestion:0, contact:false, result:false, waClick:false, exitSent:false };
+
+/* Envoi de sortie : sendBeacon survit à la fermeture de l'onglet, contrairement
+   à un fetch classique qui est annulé. */
+function pushBeacon(extra){
+  if(!SHEETS_ENDPOINT || SHEETS_ENDPOINT.indexOf("A_REMPLACER") !== -1){
+    if(window.console && console.warn) console.warn("[RECODE] sortie non envoyée (endpoint non configuré) :", extra);
+    return;
+  }
+  var fd = buildPayload(extra);
+  if(navigator.sendBeacon){
+    try { if(navigator.sendBeacon(SHEETS_ENDPOINT, fd)) return; } catch(e){}
+  }
+  try {
+    var r = fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: fd });
+    if(r && r.catch) r.catch(function(){});
+  } catch(e){}
+}
+
+/* Une seule ligne de sortie par visite, quoi qu'il arrive. */
+function handleExit(){
+  if(progress.exitSent || !progress.started) return;
+
+  if(!progress.result){
+    progress.exitSent = true;
+    pushBeacon({ evenement:"abandon", derniere_question: String(progress.maxQuestion) });
+    return;
+  }
+  if(!progress.waClick){
+    var pre = CONTACT.prenom || readField("wa-prenom"), ins = CONTACT.instagram || readField("wa-insta");
+    if(pre || ins){
+      progress.exitSent = true;
+      pushBeacon({ evenement:"quitte_sans_clic", prenom:pre, instagram:ins });
+    }
+  }
+}
+
+/* L'envoi est silencieux et ne bloque jamais l'affichage du résultat. */
+function pushToSheet(extra){
+  if(!SHEETS_ENDPOINT || SHEETS_ENDPOINT.indexOf("A_REMPLACER") !== -1){
+    if(window.console && console.warn){
+      var dbg = {}; var fd = buildPayload(extra);
+      if(fd.forEach) fd.forEach(function(v,k){ dbg[k] = v; });
+      console.warn("[RECODE] SHEETS_ENDPOINT non configuré. Ligne qui aurait été envoyée :", dbg);
+    }
+    return;
+  }
+  try{
+    var req = fetch(SHEETS_ENDPOINT, { method:"POST", mode:"no-cors", keepalive:true, body: buildPayload(extra) });
+    if(req && req.catch) req.catch(function(){});   // un log qui échoue ne casse rien
+  }catch(e){ /* silencieux : ne jamais casser l'expérience pour un log */ }
+}
+
+/* ============================================================
+   8. INITIALISATION
+   ============================================================ */
+
+/* Écran coordonnées : il s'intercale entre la dernière question et l'analyse. */
+function submitIdentite(){
+  var msg = validateIdentite();
+  if(msg){
+    el("id-err").textContent = msg;
+    el("id-err").className = "id-err on";
+    return;
+  }
+  el("id-err").className = "id-err";
+  CONTACT.prenom    = readField("id-prenom");
+  CONTACT.instagram = normInsta(readField("id-insta"));
+  CONTACT.tel       = normPhone();
+  progress.contact  = true;
+
+  // On pré-remplit le message final : elle vient de les saisir, inutile de redemander.
+  var wp = el("wa-prenom"); if(wp) wp.value = CONTACT.prenom;
+  var wi = el("wa-insta");  if(wi) wi.value = CONTACT.instagram;
+
+  // Ligne envoyée tout de suite : les coordonnées sont récupérées même si
+  // elle ferme l'onglet pendant l'animation d'analyse.
+  pushToSheet({ evenement:"coordonnees" });
+
+  runAnalysis();
+}
+
+function startQuiz(){
+  clearAnalysis();
+  progress.started = true;
+  state.index = 0;
+  showScreen("quiz");
+  renderQuestion();
+  window.scrollTo({ top:0, behavior:"auto" });
+}
+
+function restart(){
+  clearAnalysis();
+  progress = { started:false, maxQuestion:0, contact:false, result:false, waClick:false, exitSent:false };
+  CONTACT = { prenom:"", instagram:"", tel:"" };
+  state = { index:0, answers:{}, result:null };
+  var blocks = document.querySelectorAll(".reveal");
+  for(var i=0;i<blocks.length;i++) blocks[i].classList.remove("is-in");
+  var bars = document.querySelectorAll(".zone-bar");
+  for(var b=0;b<bars.length;b++) bars[b].style.width = "0%";
+  el("donut-bar").style.strokeDashoffset = "326.7";
+  el("donut-pct").textContent = "0 %";
+  el("legend-pot").textContent = "0 %";
+  el("legend-blk").textContent = "0 %";
+  showScreen("intro");
+  window.scrollTo({ top:0, behavior:"auto" });
+}
+
+function init(){
+  el("start-btn").addEventListener("click", startQuiz);
+  el("contact-btn").addEventListener("click", submitIdentite);
+  el("next-btn").addEventListener("click", goNext);
+  el("back-btn").addEventListener("click", goBack);
+  el("restart-btn").addEventListener("click", restart);
+
+  /* pagehide couvre la fermeture d'onglet ; visibilitychange rattrape iOS,
+     où pagehide n'est pas toujours déclenché. Le drapeau exitSent évite
+     tout doublon si les deux partent. */
+  window.addEventListener("pagehide", handleExit);
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") handleExit();
+  });
+  setupCallBlock();
+}
+
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+
+/* ============================================================
+   9. SIMULATION — vérification du scoring en console.
+   Ouvre la console et tape : RECODE_simulate()
+   ============================================================ */
+
+window.RECODE_simulate = function(){
+  var saved = { index:state.index, answers:state.answers };
+  var runs = [
+    { nom:"Parcours A — terrain",
+      a:{ q1:{anciennete:"gt5",evolution:"stag"}, q2:"fat", q3:{seances:"s34",sport2:"light"},
+          q4:{generaux:["fatigue","thyro","digest"],cycle:"irregulier"}, q5:{sommeil:"h67",stress:"high",etat:"worn"},
+          q6:"regular", q7:"tooLittle", q8:["rigidOk"], q9:["loads","weight"],
+          q10:{origine:"customUp",duree:"m36"}, q11:{ranked:["coaching","apps"],bypass:false},
+          q12:["fine"], q13:{ranked:["why","reassure"],bypass:false}, q14:"understand" } },
+    { nom:"Parcours B — nourriture",
+      a:{ q1:{anciennete:"y35",evolution:"bad"}, q2:"fat", q3:{seances:"s34",sport2:"none"},
+          q4:{generaux:["none"],cycle:"regulier"}, q5:{sommeil:"h78",stress:"mid",etat:"ok"},
+          q6:"late", q7:"noNumbers", q8:["rigid","restrict","guilt","emotional"], q9:["weight"],
+          q10:{origine:"customUp",duree:"m36"}, q11:{ranked:["diets","apps"],bypass:false},
+          q12:["remarks"], q13:{ranked:["reassure","why"],bypass:false}, q14:"knowWhat" } },
+    { nom:"Parcours C — structure",
+      a:{ q1:{anciennete:"y35",evolution:"stag"}, q2:"muscle", q3:{seances:"s34",sport2:"none"},
+          q4:{generaux:["none"],cycle:"regulier"}, q5:{sommeil:"h78",stress:"low",etat:"fresh"},
+          q6:"regular", q7:"noIdea", q8:["fine"], q9:["nothing"],
+          q10:{origine:"online",duree:"m36"}, q11:{ranked:["apps","pdf","alone"],bypass:false},
+          q12:["fine"], q13:{ranked:["frame","why"],bypass:false}, q14:"knowWhat" } },
+    { nom:"Parcours D — cap",
+      a:{ q1:{anciennete:"gt5",evolution:"stag"}, q2:"dk", q3:{seances:"s34",sport2:"light"},
+          q4:{generaux:["none"],cycle:"regulier"}, q5:{sommeil:"h78",stress:"mid",etat:"ok"},
+          q6:"varies", q7:"protOnly", q8:["rigidOk"], q9:["loads","weight"],
+          q10:{origine:"changes",duree:"lt4w"}, q11:{ranked:["alone","apps"],bypass:false},
+          q12:["fine"], q13:{ranked:["frame"],bypass:false}, q14:"noIdea" } },
+    { nom:"Parcours E — surcharge",
+      a:{ q1:{anciennete:"y35",evolution:"stag"}, q2:"perf", q3:{seances:"s56",sport2:"hard"},
+          q4:{generaux:["recup","fatigue"],cycle:"spm"}, q5:{sommeil:"lt6",stress:"high",etat:"tired"},
+          q6:"regular", q7:"protOnly", q8:["rigidOk"], q9:["loads"],
+          q10:{origine:"customUp",duree:"m36"}, q11:{ranked:["coaching"],bypass:false},
+          q12:["physical","noUnderstand"], q13:{ranked:["adapt","why"],bypass:false}, q14:"precise" } },
+    { nom:"Parcours F — rien n'est cassé",
+      a:{ q1:{anciennete:"gt5",evolution:"stag"}, q2:"muscle", q3:{seances:"s34",sport2:"none"},
+          q4:{generaux:["none"],cycle:"regulier"}, q5:{sommeil:"h78",stress:"low",etat:"fresh"},
+          q6:"fixed", q7:"all3", q8:["fine"], q9:["loads","intake","weight","measures"],
+          q10:{origine:"customUp",duree:"gt6"}, q11:{ranked:["apps"],bypass:false},
+          q12:["fine"], q13:{ranked:["why"],bypass:false}, q14:"precise" } }
+  ];
+
+  var out = [];
+  for(var i=0;i<runs.length;i++){
+    state.answers = runs[i].a;
+    var sc = computeScores();
+    var key = pickArchetype(sc);
+    out.push({
+      parcours: runs[i].nom,
+      profil: ARCHETYPES[key].name,
+      archetypes: JSON.stringify(sc.arch),
+      zones: JSON.stringify(sc.finalZones)
+    });
+  }
+  state.index = saved.index; state.answers = saved.answers;
+  if(window.console && console.table) console.table(out); else if(window.console) console.log(out);
+  return out;
+};
+</script>
+</body>
+</html>
